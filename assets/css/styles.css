@@ -365,6 +365,10 @@ button svg {
   border-radius: 5px;
   font-size: 16px;
 }
+.work-experiences .companies a {
+  text-decoration: none;
+  color: #333;
+}
 .work-experiences .companies .company img {
   width: 30px;
   margin-bottom: 6px;
@@ -405,6 +409,7 @@ button svg {
   align-items: center;
   padding: 40px 0;
   background: linear-gradient(180deg, #e2c5ff 30%, rgba(255, 250, 242, 0) 94%);
+  scroll-margin-top: 80px;
 }
 .projects-header {
   font-family: "IBM Plex Serif", "IBM Plex Serif Placeholder", serif;
