@@ -35,9 +35,11 @@ const projects = [
     img: "assets/img/sqwad_dashboard.png",
     background_color: "pink",
     readable: false,
-    link: "",
+    github_link: "",
+    live_link: "",
     title: "Sqwad Dashboard",
-    description: "Sqwad DashboardSqwad Dashboard",
+    description:
+      "Sqwad Dashboard helps retail brands collaborate and reduce customer acquisition costs.",
     tags: ["React", "Redux", "Typescript", "Tailwind", "HTML", "CSS"],
   },
   {
@@ -45,7 +47,8 @@ const projects = [
     img: "https://raw.githubusercontent.com/lienkt/QA-Form-Generator-FE/main/project.png",
     background_color: "blue",
     readable: true,
-    link: "",
+    github_link: "https://github.com/lienkt/QA-Form-Generator-FE",
+    live_link: "",
     title: "QA Form Generator",
     description: "QA Form GeneratorQA Form GeneratorQA Form Generator",
     tags: ["Flutter", "HTML", "CSS"],
@@ -55,41 +58,34 @@ const projects = [
     img: "assets/img/issues_tracker.png",
     background_color: "yellow",
     readable: true,
-    link: "",
+    github_link: "https://github.com/lienkt/issues_tracker",
+    live_link: "https://lienkt.github.io/issues_tracker/",
     title: "Issues Tracker",
-    description: "issues_trackerissues_tracker",
+    description:
+      "A javascript app for creating, managing, and tracking issues with filtering and sorting.",
     tags: ["Javascript", "Tailwind"],
   },
   {
-    note: "Note: Buit at fff",
-    img: "assets/img/sqwad_dashboard.png",
+    note: "Note: Personal project",
+    img: "assets/img/portfolio.png",
     background_color: "green",
     readable: false,
-    link: "",
-    title: "Sqwad Dashboard",
-    description: "Sqwad DashboardSqwad Dashboard",
-    tags: ["React", "Redux", "HTML", "CSS"],
+    github_link: "https://github.com/lienkt/porfolio_fe",
+    live_link: "https://lienkim.info/",
+    title: "Portfolio Website",
+    description: "Personal Portfolio Website",
+    tags: ["Javascript", "HTML5", "CSS"],
   },
   {
-    note: "Note: Buit at fff",
-    img: "assets/img/sqwad_dashboard.png",
+    note: "Note: Personal project",
+    img: "assets/img/nhanliencollection.png",
     background_color: "orange",
     readable: false,
-    link: "",
+    github_link: "https://github.com/lienkt/nhanliencollection",
+    live_link: "https://nhanliencollection.art/",
     title: "Sqwad Dashboard",
-    description: "Sqwad DashboardSqwad Dashboard",
-    tags: [
-      "React",
-      "Redux",
-      "Typescript",
-      "Tailwind",
-      "HTML",
-      "CSS",
-      "React",
-      "Redux",
-      "HTML",
-      "CSS",
-    ],
+    description: "Image & video gallery",
+    tags: ["Javascript", "HTML5", "CSS"],
   },
 ];
 
@@ -99,6 +95,27 @@ projects.forEach((project) => {
   const item = document.createElement("div");
   item.className = "item " + project.background_color;
 
+  const hasGithub = project.github_link?.trim();
+  const hasLive = project.live_link?.trim();
+
+  let buttonsHTML = "";
+  if (hasGithub && hasLive) {
+    buttonsHTML = `
+      <div class="project-buttons two">
+        <button onclick="window.open('${project.github_link}', '_blank')">GitHub</button>
+        <button onclick="window.open('${project.live_link}', '_blank')">Live</button>
+      </div>
+    `;
+  } else if (hasGithub || hasLive) {
+    const link = hasGithub ? project.github_link : project.live_link;
+    const text = hasGithub ? "GitHub" : "Live";
+    buttonsHTML = `
+      <div class="project-buttons one">
+        <button onclick="window.open('${link}', '_blank')">${text}</button>
+      </div>
+    `;
+  }
+
   item.innerHTML = `
     <p class="note">${project.note}</p>
     <img src="${project.img}" alt="${project.title}" class="image" />
@@ -107,6 +124,7 @@ projects.forEach((project) => {
     <div class="tags">
       ${project.tags.map((tag) => `<span class="tag">${tag}</span>`).join("")}
     </div>
+    ${buttonsHTML}
   `;
 
   projectsContainer.appendChild(item);
