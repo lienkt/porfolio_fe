@@ -83,7 +83,7 @@ const projects = [
     readable: false,
     github_link: "https://github.com/lienkt/nhanliencollection",
     live_link: "https://nhanliencollection.art/",
-    title: "Sqwad Dashboard",
+    title: "Nhan Lien Collection",
     description: "Image & video gallery",
     tags: ["Javascript", "HTML5", "CSS"],
   },
