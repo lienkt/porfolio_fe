@@ -521,7 +521,7 @@ button svg {
 }
 .about-section .image-vertical-crop {
   width: 100%;
-  height: 900px;
+  height: 1100px;
   overflow: hidden;
   position: relative;
 }
@@ -596,7 +596,7 @@ button svg {
   justify-content: center;
   font-size: 16px;
 }
-/* 
+
 .mac-content .image-edge-crop {
   flex-shrink: 0;
   width: 300px;
@@ -616,33 +616,20 @@ button svg {
   max-height: none;
   position: absolute;
   z-index: 1;
-  top: 35%;
-  left: 40%;
-  transform: translate(-50%, -50%) scale(0.5);
-} */
-
-.mac-content .image-edge-crop-2 {
-  flex-shrink: 0;
-  width: 300px;
-  height: auto;
-  overflow: hidden;
-  position: relative;
-  margin-right: 60px;
-  border-radius: 10px;
-  transform: rotate(-3deg);
-  transform-origin: top left;
-  margin-top: 20px;
-}
-.mac-content .image-edge-crop-2 img {
-  height: auto;
-  width: auto;
-  max-width: none;
-  max-height: none;
-  position: absolute;
-  z-index: 1;
   top: 15%;
   left: 20%;
   transform: translate(-49%, -48%) scale(0.2);
+}
+
+@media (max-width: 1320px) {
+  .about-section .image-vertical-crop {
+    height: 1200px;
+    width: 100%;
+  }
+  .about-section .background {
+    width: auto;
+    height: 100%;
+  }
 }
 
 @media (max-width: 1020px) {
@@ -663,41 +650,27 @@ button svg {
   .mac-content {
     flex-direction: column;
   }
-  /* image-edge-crop: */
-  /* .mac-content .image-edge-crop {
-    transform: none;
-    margin-top: 0px;
-    margin-bottom: 20px;
-    width: 100%;
-    height: 300px;
-  }
-  .mac-content .image-edge-crop img {
-    top: 20%;
-  }
 
   .mac-content .image-edge-crop {
     transform: none;
     margin-top: 0px;
     margin-bottom: 20px;
+    border-radius: 0;
     width: 100%;
-    height: 300px;
-  } */
-  .mac-content .image-edge-crop-2 {
-    transform: none;
-    margin-top: 0px;
-    margin-bottom: 20px;
-    width: 100%;
+    height: 400px;
+  }
+
+  .mac-content .image-edge-crop img {
+    transform: translate(-49%, -51%) scale(0.2);
+  }
+}
+
+@media (max-width: 576px) {
+  .mac-content .image-edge-crop {
     height: 300px;
   }
-  .mac-content .image-edge-crop-2 img {
-    top: 20%;
-  }
-  .mac-content .image-edge-crop-2 {
-    transform: none;
-    margin-top: 0px;
-    margin-bottom: 20px;
-    width: 100%;
-    height: 300px;
+  .mac-content .image-edge-crop img {
+    transform: translate(-51%, -51%) scale(0.2);
   }
 }
 
