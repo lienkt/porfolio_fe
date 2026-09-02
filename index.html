@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>Lien KIM - Full Stack Developer</title>
+    <title data-content="site.pageTitle">Lien KIM - Software Developer</title>
     <link
       rel="icon"
       href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🌻</text></svg>"
@@ -15,7 +15,7 @@
       <div class="header-container">
         <div class="header width-lg-screen">
           <a href="./" class="logo-link" aria-label="Homepage">
-            <p class="logo-name">Lien KIM</p>
+            <p class="logo-name" data-content="site.name">Lien KIM</p>
             <div class="logo-image-wrapper">🌻</div>
           </a>
 
@@ -26,7 +26,7 @@
                   href="https://drive.google.com/file/d/1wg-AV26ZET-mczP3YdyRU8mdxt8qPlJh/view?usp=drive_link"
                   target="_blank"
                   class="nav-link"
-                  >CV</a
+                  data-content="navigation.cv">CV</a
                 >
               </li>
               <li>
@@ -34,21 +34,21 @@
                   href="https://www.linkedin.com/in/lienkt0110/"
                   target="_blank"
                   class="nav-link show-desktop"
-                  >LinkedIn</a
+                  data-content="navigation.linkedin">LinkedIn</a
                 >
               </li>
               <li>
-                <a href="#projects" class="nav-link show-desktop">Projects</a>
+                <a href="#projects" class="nav-link show-desktop" data-content="navigation.projects">Projects</a>
               </li>
               <li>
                 <a
                   href="https://github.com/lienkt"
                   target="_blank"
                   class="nav-link show-desktop"
-                  >Github</a
+                  data-content="navigation.github">Github</a
                 >
               </li>
-              <li><a href="#contact" class="nav-link">Contact</a></li>
+              <li><a href="#contact" class="nav-link" data-content="navigation.contact">Contact</a></li>
             </ul>
           </nav>
         </div>
@@ -69,27 +69,27 @@
               </div>
             </div>
             <div class="intro-content">
-              <p>Full stack developer</p>
+              <p data-content="site.role">GenAI Developer | Software Developer</p>
             </div>
             <div class="intro-detail">
-              <p>
-                Full Stack Developer with 5+ years of experience, highly
-                proficient in JavaScript and TypeScript. Specialized in React
-                and Node.js, building scalable, high-performance applications
-                with intuitive, user-focused interfaces. Experienced in
-                developing and integrating frontend and backend systems within
-                large-scale applications.
+              <p data-content="hero.intro">
+                I'm a Software Engineer with 5+ years of Front-End experience,
+                passionate about building great user experiences and exploring
+                what’s possible with Generative AI. I combine my experience in
+                React, TypeScript, and modern web development with LLMs, RAG,
+                and AI agents to build practical, intelligent, and user-focused
+                products.
               </p>
             </div>
             <div class="quote-and-case-studies">
               <div class="quote button-container">
                 <a href="https://cal.com/lienkt0110" target="_blank">
-                  <div class="quote-text">Book a call with me</div>
+                  <div class="quote-text" data-content="hero.primaryButton">Book a call with me</div>
                 </a>
               </div>
               <div class="case-studies button-container">
                 <a href="#projects">
-                  <div class="quote-text">Read my projects</div>
+                  <div class="quote-text" data-content="hero.secondaryButton">Read my projects</div>
                 </a>
               </div>
             </div>
@@ -151,10 +151,10 @@
         </div>
         <div class="work-experiences-wrapper">
           <div class="work-experiences width-lg-screen">
-            <div class="title">
+            <div class="title" data-content="experience.title">
               Techniques and compannies I have worked in development
             </div>
-            <div class="techs">
+            <div class="techs" id="technologiesContainer">
               <div class="tech">React</div>
               <div class="tech">Nodejs</div>
               <div class="tech">Flutter</div>
@@ -171,7 +171,7 @@
               >
                 <div class="company sqwad">
                   <img src="assets/img/joinsqwad_logo.jpeg" />
-                  <p>Sqwad - Paris</p>
+                  <p data-content="experience.companies.0">Sqwad - Paris</p>
                 </div>
               </a>
 
@@ -182,7 +182,7 @@
               >
                 <div class="company hp">
                   <img src="assets/img/hello_pomelo_digital_logo.jpeg" />
-                  <p>Hello Pomelo - Paris</p>
+                  <p data-content="experience.companies.1">Hello Pomelo - Paris</p>
                 </div>
               </a>
 
@@ -193,7 +193,7 @@
               >
                 <div class="company fpt">
                   <img src="assets/img/fpt_software_logo.jpeg" />
-                  <p>FPT - HCM</p>
+                  <p data-content="experience.companies.2">FPT - HCM</p>
                 </div>
               </a>
 
@@ -204,7 +204,7 @@
               >
                 <div class="company axon">
                   <img src="assets/img/axonactive_logo.jpeg" />
-                  <p>Axon Active - HCM</p>
+                  <p data-content="experience.companies.3">Axon Active - HCM</p>
                 </div>
               </a>
 
@@ -215,7 +215,7 @@
               >
                 <div class="company ivc">
                   <img src="assets/img/isb_vietnam_co_limited_logo.jpeg" />
-                  <p>IVC - HCM</p>
+                  <p data-content="experience.companies.4">IVC - HCM</p>
                 </div>
               </a>
             </div>
@@ -223,7 +223,7 @@
         </div>
       </article>
       <section id="projects" class="projects-section">
-        <div class="projects-header">My projects</div>
+        <div class="projects-header" data-content="projectsHeading">My projects</div>
         <div
           id="projectsContainer"
           class="projects-section-container width-lg-screen"
@@ -258,59 +258,20 @@
                 <span class="mac-btn yellow"></span>
                 <span class="mac-btn green"></span>
               </div>
-              <span class="mac-title">About</span>
+              <span class="mac-title" data-content="about.title">About</span>
             </div>
             <div class="mac-content">
               <div class="image-edge-crop">
-                <img src="assets/img/IMG_0534_1.jpg" />
+                <img
+                  src="assets/img/about-career-path-simple.png"
+                  alt="Minimal abstract career path with connected milestones and an upward arrow"
+                />
               </div>
-              <p class="framer-text" style="--framer-font-size: 17px">
-                My journey as a Full Stack Developer began in 2016 when I
-                started as a Software Engineer at IVC, where I worked on ERP
-                systems using Odoo, building custom features and data-driven
-                reports with Python and SQL. Early on, I was exposed to both
-                frontend and backend development, which shaped my ability to
-                deliver practical, end-to-end solutions.<br
-                  class="framer-text"
-                /><br class="framer-text" />
-
-                At Axon Active, I expanded my technical range by contributing to
-                internal systems across marketing, HR, and operations. Working
-                closely with cross-functional stakeholders, I not only developed
-                applications using React, Java Spring, and PostgreSQL, but also
-                actively proposed and built tools that improved internal
-                workflows and team productivity.<br class="framer-text" /><br
-                  class="framer-text"
-                />
-
-                I further strengthened my full-stack expertise at FPT Software,
-                where I developed a real-time chat and calling application
-                within a microservices architecture using React and Node.js.
-                This experience deepened my understanding of scalable systems,
-                testing strategies, and collaboration within large international
-                teams.<br class="framer-text" /><br class="framer-text" />
-
-                In 2020, I moved to Paris, France, to pursue a Master of Science
-                in Computer Science at EPITA, further enhancing my knowledge in
-                software engineering, modern architectures, and best practices
-                in full-stack development.<br class="framer-text" /><br
-                  class="framer-text"
-                />
-
-                During my time in France, I continued to grow as a full-stack
-                engineer. At Hello Pomelo, I built an end-to-end application
-                that streamlined client requirement collection by generating
-                automated PDF reports and integrating backend workflows. Later
-                at Sqwad, I led frontend development for Shopify-based
-                applications while also contributing to backend APIs with
-                Django, focusing on performance, scalability, and clean
-                architecture.<br class="framer-text" /><br
-                  class="framer-text"
-                />
-                With a strong foundation across both frontend and backend, I
-                enjoy building complete, scalable products that are not only
-                technically robust but also intuitive and impactful for users.
-              </p>
+              <p
+                class="framer-text"
+                style="--framer-font-size: 17px"
+                data-content="about.body"
+              ></p>
             </div>
           </div>
         </div>
@@ -318,10 +279,11 @@
     </main>
 
     <footer class="site-footer" id="contact">
-      <p class="title">Let’s collaborate and create something great!</p>
-      <a href="mailto:lienkt0110@gmail.com" class="email">Email me</a>
-      <p class="copyright">© 2025 Lien KIM. All Rights Reserved.</p>
+      <p class="title" data-content="footer.callToAction">Let’s collaborate and create something great!</p>
+      <a href="mailto:lienkt0110@gmail.com" class="email" data-content="footer.emailLabel">Email me</a>
+      <p class="copyright" data-content="footer.copyright">© 2025 Lien KIM. All Rights Reserved.</p>
     </footer>
+    <script src="assets/js/content.js"></script>
     <script src="assets/js/script.js"></script>
   </body>
 </html>

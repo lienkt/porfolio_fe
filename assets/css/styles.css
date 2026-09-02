@@ -141,7 +141,7 @@ body {
 .intro-content {
   margin-top: 20px;
   font-family: "IBM Plex Serif", "IBM Plex Serif Placeholder", serif;
-  font-size: 52px;
+  font-size: 36px;
   font-style: italic;
   font-weight: 600;
 }
@@ -151,7 +151,7 @@ body {
 }
 .intro-detail {
   margin-top: 20px;
-  font-size: 20px;
+  font-size: 18px;
   text-align: center;
   color: #424242;
   display: flex;
@@ -600,7 +600,7 @@ button svg {
 .mac-content .image-edge-crop {
   flex-shrink: 0;
   width: 300px;
-  height: auto;
+  height: 750px;
   overflow: hidden;
   position: relative;
   margin-right: 60px;
@@ -609,16 +609,22 @@ button svg {
   transform-origin: top left;
   margin-top: 20px;
 }
+
+.mac-content .framer-text {
+  max-height: 750px;
+  margin: 20px 0 0;
+  padding-right: 12px;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-gutter: stable;
+}
+
 .mac-content .image-edge-crop img {
-  height: auto;
-  width: auto;
-  max-width: none;
-  max-height: none;
-  position: absolute;
-  z-index: 1;
-  top: 15%;
-  left: 20%;
-  transform: translate(-49%, -48%) scale(0.2);
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 
 @media (max-width: 1320px) {
@@ -653,24 +659,27 @@ button svg {
 
   .mac-content .image-edge-crop {
     transform: none;
-    margin-top: 0px;
+    margin-top: 0;
     margin-bottom: 20px;
     border-radius: 0;
     width: 100%;
-    height: 400px;
+    height: 600px;
   }
 
-  .mac-content .image-edge-crop img {
-    transform: translate(-49%, -51%) scale(0.2);
+  .mac-content .framer-text {
+    max-height: 600px;
+    margin-top: 0;
   }
+
 }
 
 @media (max-width: 576px) {
   .mac-content .image-edge-crop {
-    height: 300px;
+    height: 450px;
   }
-  .mac-content .image-edge-crop img {
-    transform: translate(-51%, -51%) scale(0.2);
+
+  .mac-content .framer-text {
+    max-height: 450px;
   }
 }
 
