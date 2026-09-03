@@ -7,9 +7,40 @@ document.querySelectorAll("[data-content]").forEach((element) => {
   if (value !== undefined) element.innerHTML = value;
 });
 
-const technologiesContainer = document.getElementById("technologiesContainer");
-technologiesContainer.innerHTML = PORTFOLIO_CONTENT.experience.technologies
-  .map((technology) => `<div class="tech">${technology}</div>`)
+const skillGroupsContainer = document.getElementById("skillGroupsContainer");
+skillGroupsContainer.innerHTML = PORTFOLIO_CONTENT.experience.skillGroups
+  .map(
+    (group) => `
+      <article class="skill-group">
+        <div class="skill-group-title">
+          <span class="skill-icon" aria-hidden="true">${group.icon}</span>
+          <h3>${group.title}</h3>
+        </div>
+        <div class="skill-tags">
+          ${group.items.map((item) => `<span>${item}</span>`).join("")}
+        </div>
+      </article>`,
+  )
+  .join("");
+
+const companiesContainer = document.getElementById("companiesContainer");
+companiesContainer.innerHTML = PORTFOLIO_CONTENT.experience.companies
+  .map(
+    (company) => `
+      <a href="${company.link}" target="_blank" rel="noopener noreferrer">
+        <article class="company ${company.className}">
+          ${
+            company.logo
+              ? `<img src="${company.logo}" alt="" />`
+              : `<span class="company-logo-text" aria-hidden="true">${company.logoText}</span>`
+          }
+          <div>
+            <h3>${company.name}</h3>
+            <p>${company.detail}</p>
+          </div>
+        </article>
+      </a>`,
+  )
   .join("");
 
 const container = document.getElementById("imageContainer");
