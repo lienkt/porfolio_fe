@@ -44,6 +44,56 @@ companiesContainer.innerHTML = PORTFOLIO_CONTENT.experience.companies
   )
   .join("");
 
+const experienceModal = document.getElementById("experienceModal");
+const experienceTimeline = document.getElementById("experienceTimeline");
+const openExperienceModal = document.getElementById("openExperienceModal");
+const closeExperienceModal = document.getElementById("closeExperienceModal");
+
+experienceTimeline.innerHTML = PORTFOLIO_CONTENT.experience.companies
+  .map(
+    (company) => `
+      <article class="timeline-item">
+        <div class="timeline-marker" aria-hidden="true"></div>
+        <div class="timeline-card">
+          <div class="timeline-heading">
+            <div>
+              <p class="timeline-period">${company.period}</p>
+              <h3>${company.name}</h3>
+            </div>
+            <span class="timeline-location">${company.location}</span>
+          </div>
+          <p class="timeline-role">
+            ${company.role}${company.employmentType ? ` · ${company.employmentType}` : ""}
+          </p>
+          <ul class="timeline-responsibilities">
+            ${company.responsibilities.map((responsibility) => `<li>${responsibility}</li>`).join("")}
+          </ul>
+          <div class="timeline-technologies">
+            ${company.technologies.map((technology) => `<span>${technology}</span>`).join("")}
+          </div>
+        </div>
+      </article>`,
+  )
+  .join("");
+
+openExperienceModal.addEventListener("click", () => {
+  experienceModal.showModal();
+  document.body.classList.add("modal-open");
+});
+
+function closeExperienceDetails() {
+  experienceModal.close();
+  document.body.classList.remove("modal-open");
+}
+
+closeExperienceModal.addEventListener("click", closeExperienceDetails);
+experienceModal.addEventListener("click", (event) => {
+  if (event.target === experienceModal) closeExperienceDetails();
+});
+experienceModal.addEventListener("close", () => {
+  document.body.classList.remove("modal-open");
+});
+
 const educationContainer = document.getElementById("educationContainer");
 educationContainer.innerHTML = PORTFOLIO_CONTENT.experience.education
   .map(
@@ -98,14 +148,15 @@ PORTFOLIO_CONTENT.projects.forEach((project) => {
 
   if (hasGithub && hasLive) {
     buttonsHTML = `<div class="project-buttons two">
-      <button onclick="window.open('${project.github_link}', '_blank')">GitHub</button>
-      <button onclick="window.open('${project.live_link}', '_blank')">Live</button>
+      <a class="project-link github" href="${project.github_link}" target="_blank" rel="noopener noreferrer">View code <span aria-hidden="true">↗</span></a>
+      <a class="project-link live" href="${project.live_link}" target="_blank" rel="noopener noreferrer">View live <span aria-hidden="true">↗</span></a>
     </div>`;
   } else if (hasGithub || hasLive) {
     const link = hasGithub ? project.github_link : project.live_link;
-    const text = hasGithub ? "GitHub" : "Live";
+    const text = hasGithub ? "View code" : "View live";
+    const className = hasGithub ? "github" : "live";
     buttonsHTML = `<div class="project-buttons one">
-      <button onclick="window.open('${link}', '_blank')">${text}</button>
+      <a class="project-link ${className}" href="${link}" target="_blank" rel="noopener noreferrer">${text} <span aria-hidden="true">↗</span></a>
     </div>`;
   }
 

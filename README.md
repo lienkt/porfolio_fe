@@ -32,6 +32,14 @@ The project has no framework, build step, package manager, or external JavaScrip
 ├── index.html
 ├── CNAME
 ├── README.md
+├── cv
+│   ├── data.json
+│   ├── template.html
+│   ├── cv.css
+│   ├── STYLE_PROMPT.md
+│   ├── generate_cv.py
+│   ├── index.html
+│   └── lien-kim-cv.pdf
 └── assets
     ├── css
     │   └── styles.css
@@ -49,6 +57,13 @@ The project has no framework, build step, package manager, or external JavaScrip
 | `assets/js/script.js` | Renders dynamic content and handles gallery navigation |
 | `assets/css/styles.css` | Layout, colors, responsive rules, and component styles |
 | `assets/img/` | Avatars, company logos, and project images |
+| `cv/data.json` | Single source of truth for CV content |
+| `cv/generate_cv.py` | Validates CV data and generates HTML and PDF |
+| `cv/template.html` | Semantic two-page HTML template |
+| `cv/cv.css` | A4 screen and print styling |
+| `cv/STYLE_PROMPT.md` | Design and editorial rules for future CV updates |
+| `cv/index.html` | Generated browser preview; do not edit directly |
+| `cv/lien-kim-cv.pdf` | Generated CV opened by the website's CV button |
 | `CNAME` | Custom domain used by GitHub Pages |
 
 ## Run locally
@@ -67,6 +82,80 @@ python3 -m http.server 8000
 ```
 
 Then visit [http://localhost:8000](http://localhost:8000). You can also open `index.html` directly or use an editor extension such as Live Server.
+
+## Update and regenerate the CV
+
+The CV uses a deterministic workflow: its content lives in JSON, its layout lives in an HTML template and CSS, and Python generates the final HTML/PDF files. No Python package installation is required.
+
+### Requirements
+
+- Python 3.9 or newer
+- Google Chrome or Chromium
+
+On macOS, the generator automatically checks the standard Google Chrome location. On Linux it checks common Chrome and Chromium commands. For a custom installation, set `CV_CHROME_BIN` to the full browser executable path:
+
+```bash
+CV_CHROME_BIN="/path/to/chrome" python3 cv/generate_cv.py
+```
+
+### Normal update workflow
+
+1. Open `cv/data.json`.
+2. Update the relevant section: `basics`, `summary`, `skills`, `languages`, `experience`, `education`, or `projects`.
+3. Preserve reverse-chronological order in the `experience` array.
+4. Validate the JSON and required fields:
+
+```bash
+python3 cv/generate_cv.py --check
+```
+
+5. Generate both `cv/index.html` and `cv/lien-kim-cv.pdf`:
+
+```bash
+python3 cv/generate_cv.py
+```
+
+6. Preview `cv/index.html` in a browser and open `cv/lien-kim-cv.pdf` to verify both pages before committing.
+
+The generator fails when required data is missing, an experience has no bullet points, the page split is invalid, Chrome cannot create the PDF, or the generated PDF is not exactly two pages.
+
+To generate only the browser preview without Chrome or PDF export, run:
+
+```bash
+python3 cv/generate_cv.py --html-only
+```
+
+### Content structure
+
+Every experience follows this format:
+
+```json
+{
+  "role": "Job title",
+  "company": "Company name",
+  "period": "Mon. YYYY – Mon. YYYY",
+  "location": "City, Country",
+  "bullets": [
+    "Action-led achievement with context, technology, and outcome."
+  ]
+}
+```
+
+Every CV project contains `name`, one to three `bullets`, `technologies`, `github_url`, and `live_url`. Use an empty string when a GitHub or live link is unavailable, but keep at least one valid link per project. Add technology names to `technology_terms` when they should be automatically bolded inside summaries and bullets. Keep only the most relevant projects so the CV remains focused and fits two pages.
+
+The `layout.experience_items_on_page_one` value controls where the experience list is split between pages. Change it only when balancing page content, then regenerate and inspect the PDF.
+
+### CV writing and design rules
+
+Read `cv/STYLE_PROMPT.md` before asking an AI assistant to revise the CV. It is the design and editorial contract for maintaining ATS compatibility, consistent dates, accurate facts, concise bullet points, and the two-page layout.
+
+Important maintenance rules:
+
+- Edit content in `cv/data.json`; do not edit the generated `cv/index.html`.
+- Edit structure in `cv/template.html` and visual rules in `cv/cv.css`.
+- Never invent metrics or achievements. Add measurable results only when they can be supported.
+- Regenerate and review both files after every content, template, or style change.
+- Keep the filename `lien-kim-cv.pdf` unless you also update the CV link in the website navigation.
 
 ## Customize the portfolio
 

@@ -1,0 +1,205 @@
+@page {
+  size: A4;
+  margin: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  background: #e9e9e9;
+  color: #1d252c;
+  font-family: Aptos, "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+  font-size: 10.3pt;
+  line-height: 1.3;
+}
+
+.page {
+  width: 210mm;
+  min-height: 297mm;
+  margin: 10mm auto;
+  padding: 13mm 15mm 12mm;
+  background: #fff;
+  box-shadow: 0 2mm 8mm rgba(0, 0, 0, 0.12);
+}
+
+.resume-header {
+  margin-bottom: 5mm;
+  text-align: center;
+}
+
+h1 {
+  margin: 0 0 1.8mm;
+  font-size: 24pt;
+  font-weight: 700;
+  color: #172f3d;
+  letter-spacing: 0.025em;
+}
+
+.resume-header p {
+  margin: 0;
+  font-size: 9.2pt;
+}
+
+.resume-header .profile-links {
+  margin-top: 1.2mm;
+  font-size: 9.4pt;
+  font-weight: 600;
+}
+
+.website-link,
+.project-links .live-link {
+  color: #075d70;
+  font-weight: 700;
+  text-decoration: underline;
+  text-underline-offset: 1.2px;
+}
+
+.resume-header span {
+  margin: 0 1.2mm;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+section + section {
+  margin-top: 4mm;
+}
+
+h2 {
+  margin: 0 0 2mm;
+  padding-bottom: 0.8mm;
+  border-bottom: 0.35mm solid #274e5e;
+  color: #173b4a;
+  font-size: 13.5pt;
+  line-height: 1.1;
+}
+
+h2 small {
+  font-size: 9pt;
+  font-weight: 400;
+}
+
+h3,
+p {
+  margin: 0;
+}
+
+.entry + .entry,
+.project + .project {
+  margin-top: 3mm;
+}
+
+.entry-heading,
+.entry-subheading {
+  display: flex;
+  justify-content: space-between;
+  gap: 5mm;
+}
+
+.entry-heading h3 {
+  font-size: 10.5pt;
+}
+
+.entry-heading time,
+.entry-heading span,
+.entry-subheading time,
+.entry-subheading span {
+  flex-shrink: 0;
+}
+
+.entry-heading time,
+.entry-subheading > span:last-child {
+  color: #46545c;
+  font-style: italic;
+}
+
+.entry-subheading {
+  margin-top: 0.5mm;
+  font-size: 9.5pt;
+}
+
+ul {
+  margin: 1.2mm 0 0;
+  padding-left: 5mm;
+}
+
+li {
+  padding-left: 0.5mm;
+}
+
+li + li {
+  margin-top: 0.65mm;
+}
+
+.compact + .compact {
+  margin-top: 2.2mm;
+}
+
+.project-heading {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 4mm;
+}
+
+.project h3 {
+  font-size: 10.5pt;
+}
+
+.project ul {
+  margin-top: 0.8mm;
+}
+
+.project-technologies {
+  color: #34434b;
+}
+
+.project-links {
+  flex-shrink: 0;
+  font-size: 9pt;
+  font-weight: 600;
+}
+
+.project-links a {
+  color: #214f62;
+  text-decoration: underline;
+  text-underline-offset: 1px;
+}
+
+@media print {
+  html,
+  body {
+    background: #fff;
+  }
+
+  .page {
+    margin: 0;
+    box-shadow: none;
+    break-after: page;
+  }
+
+  .page:last-child {
+    break-after: auto;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .page {
+    width: 100%;
+    min-height: auto;
+    margin: 0;
+    padding: 24px 18px;
+  }
+
+  .entry-heading,
+  .entry-subheading {
+    flex-wrap: wrap;
+    gap: 2px 12px;
+  }
+}

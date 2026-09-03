@@ -1,0 +1,163 @@
+{
+  "schema_version": 1,
+  "last_updated": "2026-09-03",
+  "basics": {
+    "name": "Lien KIM",
+    "phone": "+32 470 17 88 70",
+    "phone_href": "+32470178870",
+    "email": "lienkt0110@gmail.com",
+    "linkedin": "linkedin.com/in/lienkt0110",
+    "linkedin_url": "https://www.linkedin.com/in/lienkt0110/",
+    "github": "github.com/lienkt",
+    "github_url": "https://github.com/lienkt",
+    "website": "lienkim.info",
+    "website_url": "https://lienkim.info/"
+  },
+  "summary": "Software Engineer with 5+ years of Front-End experience, combining a strong foundation in React, TypeScript, and modern web development with Python, Machine Learning, LLMs, RAG, and AI agents. Passionate about building practical, scalable, and user-focused AI products.",
+  "skills": [
+    {
+      "category": "Generative AI & Data",
+      "items": ["LLMs", "RAG", "AI Agents", "Prompt Engineering", "Machine Learning", "Python", "NumPy", "Power BI"]
+    },
+    {
+      "category": "Front-End",
+      "items": ["React", "TypeScript", "JavaScript", "Redux", "HTML5", "CSS3", "Tailwind CSS", "MUI"]
+    },
+    {
+      "category": "Back-End & Data",
+      "items": ["Node.js", "Django", "PostgreSQL", "MongoDB", "REST APIs"]
+    },
+    {
+      "category": "Testing & Tools",
+      "items": ["React Testing Library", "Cypress", "Jest", "Git", "GitHub", "Docker", "Figma"]
+    }
+  ],
+  "languages": ["Vietnamese (Native)", "English (Working proficiency)", "French (Basic — A2)"],
+  "technology_terms": [
+    "Generative AI", "Machine Learning", "Business Intelligence", "React Testing Library",
+    "Prompt Engineering", "AI Agents", "REST APIs", "TypeScript", "JavaScript",
+    "PostgreSQL", "Microservices", "Tailwind CSS", "Power BI", "Node.js",
+    "Data Science", "Data Analysis", "React", "Redux", "HTML5", "CSS3", "HTML", "CSS", "Tailwind",
+    "Django", "MongoDB", "Cypress", "CakePHP", "Java Spring", "WordPress",
+    "Streamlit", "Flutter", "Python", "NumPy", "Figma", "Docker", "GitHub",
+    "jQuery", "Odoo", "SQL", "PHP", "Jest", "LLMs", "RAG"
+  ],
+  "experience": [
+    {
+      "role": "AI & Data Science Trainee",
+      "company": "BeCode · Full-time",
+      "period": "May 2026 – Present",
+      "location": "Brussels, Belgium · Hybrid",
+      "bullets": [
+        "Developing practical skills in Python, Machine Learning, Generative AI, and software development.",
+        "Collaborating on real-world AI and data projects using industry-standard tools and workflows.",
+        "Designing AI-powered applications, data pipelines, and solutions focused on LLMs, automation, and analytics."
+      ]
+    },
+    {
+      "role": "Software Engineer",
+      "company": "Sqwad",
+      "period": "Jul. 2022 – Jul. 2023",
+      "location": "Paris, France",
+      "bullets": [
+        "Led React frontend development for Admin Squad and Shopify Squad apps adopted by several Shopify clients in France.",
+        "Translated Figma designs into responsive interfaces and integrated them with backend APIs.",
+        "Developed scalable frontend architecture with React, TypeScript, Redux, HTML, CSS, and Tailwind.",
+        "Supported Django API design and authored unit tests with React Testing Library."
+      ]
+    },
+    {
+      "role": "Software Engineer Intern",
+      "company": "Hello Pomelo",
+      "period": "Sep. 2021 – Mar. 2022",
+      "location": "Paris, France",
+      "bullets": [
+        "Engineered a full-stack requirements application using Flutter, React, and Node.js.",
+        "Automated PDF generation and email delivery to streamline client and marketing workflows."
+      ]
+    },
+    {
+      "role": "Software Engineer",
+      "company": "FPT Software — Client: PatientPop, USA",
+      "period": "Dec. 2019 – Jul. 2020",
+      "location": "Ho Chi Minh City, Vietnam",
+      "bullets": [
+        "Developed frontend and backend features for a real-time chat and calling application in a microservices system using React and Node.js.",
+        "Implemented Cypress end-to-end tests and React Testing Library component tests, improving stability and reducing regressions.",
+        "Collaborated with a large US-based cross-functional team to integrate features into a broader ecosystem."
+      ]
+    },
+    {
+      "role": "Software Engineer",
+      "company": "Axon Active Vietnam",
+      "period": "Aug. 2018 – Aug. 2019",
+      "location": "Ho Chi Minh City, Vietnam",
+      "bullets": [
+        "Developed and maintained internal systems for marketing, HR, recruitment, payroll, and workforce management.",
+        "Built applications with React, WordPress, jQuery, PHP, Java Spring, and PostgreSQL.",
+        "Worked with cross-functional stakeholders to deliver tools that improved productivity and operations."
+      ]
+    },
+    {
+      "role": "Software Engineer",
+      "company": "ISB Vietnam Company (IVC)",
+      "period": "Jul. 2016 – Jul. 2018",
+      "location": "Ho Chi Minh City, Vietnam",
+      "bullets": [
+        "Customized Odoo ERP solutions for Novaland Group and built sales reports with SQL and Python.",
+        "Developed a CakePHP payroll and expense system for Sagawa Express, covering hours, wages, and transportation claims.",
+        "Delivered responsive frontend and efficient backend solutions while gathering requirements directly from clients."
+      ]
+    }
+  ],
+  "education": [
+    {
+      "school": "EPITA",
+      "location": "Le Kremlin-Bicêtre, Paris, France",
+      "degree": "Master of Science in Computer Science — Software Engineering",
+      "period": "Oct. 2020 – Apr. 2022"
+    },
+    {
+      "school": "University of Science, Ho Chi Minh City",
+      "location": "Ho Chi Minh City, Vietnam",
+      "degree": "Bachelor of Science in Physics — Physics and Computer Science",
+      "period": "Oct. 2012 – Oct. 2016"
+    }
+  ],
+  "projects": [
+    {
+      "name": "Opportunities Space Innovation — Orange Business",
+      "bullets": [
+        "Explored how Generative AI can help identify and shape new business opportunities.",
+        "Designed an AI-oriented concept connecting innovation discovery with practical business intelligence."
+      ],
+      "technologies": ["Generative AI", "Python", "LLMs", "Business Intelligence"],
+      "github_url": "https://github.com/lienkt/orange",
+      "live_url": ""
+    },
+    {
+      "name": "RailPulse — SNCB GenAI Challenge",
+      "bullets": [
+        "Designed an AI concept supporting smarter and more helpful railway experiences.",
+        "Applied Generative AI, Python, and LLMs to explore practical passenger-facing use cases."
+      ],
+      "technologies": ["Generative AI", "Python", "LLMs"],
+      "github_url": "https://github.com/lienkt/railpulse-genai-challenge",
+      "live_url": ""
+    },
+    {
+      "name": "Belgian House Price Estimation",
+      "bullets": [
+        "Built a Machine Learning application that estimates Belgian property prices from geospatial and property attributes.",
+        "Delivered an interactive Streamlit interface for fast, data-driven market estimates."
+      ],
+      "technologies": ["Python", "Machine Learning", "Streamlit", "Data Analysis"],
+      "github_url": "https://github.com/lienkt/immo-eliza-deployment",
+      "live_url": "https://belgian-immo-eliza.streamlit.app/"
+    }
+  ],
+  "layout": {
+    "experience_items_on_page_one": 4,
+    "pdf_filename": "lien-kim-cv.pdf"
+  }
+}
