@@ -28,7 +28,7 @@ companiesContainer.innerHTML = PORTFOLIO_CONTENT.experience.companies
   .map(
     (company) => `
       <a href="${company.link}" target="_blank" rel="noopener noreferrer">
-        <article class="company ${company.className}">
+        <article class="company">
           ${
             company.logo
               ? `<img src="${company.logo}" alt="" />`
@@ -116,10 +116,19 @@ const nextBtn = document.getElementById("nextBtn");
 const backBtn = document.getElementById("backBtn");
 const buttons = [nextBtn, backBtn];
 
+container.innerHTML = PORTFOLIO_CONTENT.projects
+  .map(
+    (project) => `
+      <button class="image-wrapper" type="button" data-project-id="${project.id}" aria-label="View ${project.title}">
+        <img src="${project.img}" alt="${project.title} project preview" loading="lazy" />
+      </button>`,
+  )
+  .join("");
+
 function scrollByOneImage(dir) {
-  const img = container.querySelector("img");
-  if (!img) return;
-  const step = img.offsetWidth + 10;
+  const preview = container.querySelector(".image-wrapper");
+  if (!preview) return;
+  const step = preview.offsetWidth + 10;
   container.scrollLeft += dir === "next" ? step : -step;
   updateLayout();
 }
@@ -138,27 +147,26 @@ window.addEventListener("resize", updateLayout);
 const projectsContainer = document.getElementById("projectsContainer");
 
 PORTFOLIO_CONTENT.projects.forEach((project) => {
-  const item = document.createElement("div");
+  const item = document.createElement("article");
   item.className = `item ${project.background_color}`;
   item.id = project.id;
 
   const hasGithub = project.github_link?.trim();
   const hasLive = project.live_link?.trim();
-  let buttonsHTML = "";
-
-  if (hasGithub && hasLive) {
-    buttonsHTML = `<div class="project-buttons two">
-      <a class="project-link github" href="${project.github_link}" target="_blank" rel="noopener noreferrer">View code <span aria-hidden="true">↗</span></a>
-      <a class="project-link live" href="${project.live_link}" target="_blank" rel="noopener noreferrer">View live <span aria-hidden="true">↗</span></a>
-    </div>`;
-  } else if (hasGithub || hasLive) {
-    const link = hasGithub ? project.github_link : project.live_link;
-    const text = hasGithub ? "View code" : "View live";
-    const className = hasGithub ? "github" : "live";
-    buttonsHTML = `<div class="project-buttons one">
-      <a class="project-link ${className}" href="${link}" target="_blank" rel="noopener noreferrer">${text} <span aria-hidden="true">↗</span></a>
-    </div>`;
-  }
+  const projectLinks = [
+    hasGithub && { href: project.github_link, label: "View code", className: "github" },
+    hasLive && { href: project.live_link, label: "View live", className: "live" },
+  ].filter(Boolean);
+  const buttonsHTML = projectLinks.length
+    ? `<div class="project-buttons ${projectLinks.length === 1 ? "one" : "two"}">
+        ${projectLinks
+          .map(
+            (link) =>
+              `<a class="project-link ${link.className}" href="${link.href}" target="_blank" rel="noopener noreferrer">${link.label} <span aria-hidden="true">↗</span></a>`,
+          )
+          .join("")}
+      </div>`
+    : "";
 
   item.innerHTML = `
     <p class="note">${project.note}</p>
@@ -173,12 +181,10 @@ PORTFOLIO_CONTENT.projects.forEach((project) => {
   projectsContainer.appendChild(item);
 });
 
-document.querySelectorAll(".image-wrapper").forEach((wrapper, index) => {
-  wrapper.style.cursor = "pointer";
-  wrapper.addEventListener("click", () => {
-    const projectElement = document.getElementById(`project-${index}`);
-    if (projectElement) {
-      projectElement.scrollIntoView({ behavior: "smooth", block: "center" });
-    }
-  });
+container.addEventListener("click", (event) => {
+  const preview = event.target.closest("[data-project-id]");
+  if (!preview) return;
+  document
+    .getElementById(preview.dataset.projectId)
+    ?.scrollIntoView({ behavior: "smooth", block: "center" });
 });

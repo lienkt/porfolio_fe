@@ -214,8 +214,12 @@ Add an object to `experience.companies`:
 {
   name: "Company name",
   detail: "Role · Location",
+  period: "Mon. YYYY – Mon. YYYY",
+  role: "Role",
+  location: "City, Country",
+  responsibilities: ["Action and outcome"],
+  technologies: ["Technology"],
   logo: "assets/img/company-logo.png",
-  className: "company-name",
   link: "https://example.com/",
 }
 ```
@@ -240,13 +244,7 @@ Add an object to the `projects` array in `assets/js/content.js`:
 
 Use an empty string for a link that is not available. The interface automatically shows two buttons when both links are provided, one button when only one link is provided, and no buttons when both links are empty.
 
-The image gallery is currently maintained in `index.html`. When adding or reordering projects:
-
-1. Add or move the corresponding `.image-wrapper` in the gallery.
-2. Keep gallery images in the same order as `PORTFOLIO_CONTENT.projects`.
-3. Number project IDs sequentially: `project-0`, `project-1`, `project-2`, and so on.
-
-This order allows a gallery image to scroll to its matching project card.
+The image gallery is generated automatically from `PORTFOLIO_CONTENT.projects`. Adding, removing, or reordering an item in that array updates both the gallery and project cards. Keep every project `id` unique; IDs do not need to be sequential.
 
 ### Change colors and layout
 

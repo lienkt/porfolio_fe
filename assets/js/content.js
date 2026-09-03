@@ -81,7 +81,7 @@ const PORTFOLIO_CONTENT = {
       {
         name: "BeCode",
         detail: "AI & Data Science Training · Brussels",
-        period: "May 2026 – Present · 5 mos",
+        period: "May 2026 – Present",
         role: "AI & Data Science Trainee",
         employmentType: "Full-time",
         location: "Brussels, Brussels Region, Belgium · Hybrid",
@@ -93,7 +93,6 @@ const PORTFOLIO_CONTENT = {
         ],
         technologies: ["Python", "Data Science", "Machine Learning", "LLMs", "RAG", "AI Agents"],
         logo: "assets/img/becode_logo.jpeg",
-        className: "becode",
         link: "https://becode.org/",
       },
       {
@@ -111,7 +110,6 @@ const PORTFOLIO_CONTENT = {
         ],
         technologies: ["React", "TypeScript", "Redux", "Shopify", "Django", "React Testing Library"],
         logo: "assets/img/joinsqwad_logo.jpeg",
-        className: "sqwad",
         link: "https://www.linkedin.com/company/joinsqwad/",
       },
       {
@@ -126,7 +124,6 @@ const PORTFOLIO_CONTENT = {
         ],
         technologies: ["Flutter", "React", "Node.js", "PDF Generation"],
         logo: "assets/img/hello_pomelo_digital_logo.jpeg",
-        className: "hp",
         link: "https://www.linkedin.com/company/hello-pomelo-digital/",
       },
       {
@@ -142,7 +139,6 @@ const PORTFOLIO_CONTENT = {
         ],
         technologies: ["React", "Node.js", "Microservices", "Cypress", "React Testing Library"],
         logo: "assets/img/fpt_software_logo.jpeg",
-        className: "fpt",
         link: "https://www.linkedin.com/company/fpt-software/",
       },
       {
@@ -158,7 +154,6 @@ const PORTFOLIO_CONTENT = {
         ],
         technologies: ["React", "WordPress", "jQuery", "PHP", "Java Spring", "PostgreSQL"],
         logo: "assets/img/axonactive_logo.jpeg",
-        className: "axon",
         link: "https://www.linkedin.com/company/axonactive/",
       },
       {
@@ -174,7 +169,6 @@ const PORTFOLIO_CONTENT = {
         ],
         technologies: ["Odoo", "Python", "SQL", "CakePHP", "ERP"],
         logo: "assets/img/isb_vietnam_co_limited_logo.jpeg",
-        className: "ivc",
         link: "https://www.linkedin.com/company/isb-vietnam-co.-limited/",
       },
     ],
@@ -226,7 +220,7 @@ const PORTFOLIO_CONTENT = {
       live_link: "https://lienkt-react-quiz-app.netlify.app/",
       title: "React Quiz App",
       description: `<p>An interactive quiz application that dynamically generates questions, tracks user progress, and displays final scores and rankings. Features include:</p><ul><li>Configurable quiz settings including category, difficulty, question type, and number of questions.</li><li>Real-time question flow with score calculation and automatic navigation between questions.</li><li>Leaderboard functionality with ranking display and CSV export.</li><li>User-friendly interfaces built with <strong>React, TypeScript, and MUI</strong>, ensuring scalability and maintainability.</li><li>Applied <strong>Redux Toolkit</strong> for global state management.</li></ul>`,
-      tags: ["Javascript", "HTML5", "CSS", "Tailwind"],
+      tags: ["JavaScript", "HTML5", "CSS", "Tailwind"],
     },
     {
       id: "project-4",
@@ -238,7 +232,7 @@ const PORTFOLIO_CONTENT = {
       title: "Issues Tracker",
       description:
         "A javascript app for creating, managing, and tracking issues with filtering and sorting. This application utilizes both fundamental and advanced JavaScript techniques along with Tailwind CSS to address some of the most common challenges in JavaScript development. It demonstrates my ability to create efficient, maintainable, and responsive solutions while applying best practices in modern web development.",
-      tags: ["Javascript", "Tailwind"],
+      tags: ["JavaScript", "Tailwind"],
     },
     {
       id: "project-5",
@@ -250,7 +244,7 @@ const PORTFOLIO_CONTENT = {
       title: "Portfolio Website",
       description:
         "A web application fully developed using HTML5, CSS3, and JavaScript, showcasing my ability to build responsive websites with a modern, user-friendly interface that performs smoothly across all devices.",
-      tags: ["Javascript", "HTML5", "CSS"],
+      tags: ["JavaScript", "HTML5", "CSS"],
     },
     {
       id: "project-6",
@@ -262,7 +256,7 @@ const PORTFOLIO_CONTENT = {
       title: "Sqwad Dashboard",
       description:
         "Sqwad Dashboard helps retail brands collaborate and reduce customer acquisition costs. This application was developed entirely by me using React, TypeScript, and Tailwind CSS. I took full responsibility for the frontend development from scratch and maintained it throughout a year for Sqwad, demonstrating my ability to deliver scalable, maintainable, and high-quality web solutions independently.",
-      tags: ["React", "Redux", "Typescript", "Tailwind", "HTML", "CSS"],
+      tags: ["React", "Redux", "TypeScript", "Tailwind", "HTML", "CSS"],
     },
     {
       id: "project-7",
@@ -284,6 +278,6 @@ const PORTFOLIO_CONTENT = {
   footer: {
     callToAction: "Let’s collaborate and create something great!",
     emailLabel: "Email me",
-    copyright: "© 2025 Lien KIM. All Rights Reserved.",
+    copyright: "© 2026 Lien KIM. All Rights Reserved.",
   },
 };

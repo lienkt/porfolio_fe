@@ -25,6 +25,7 @@
                 <a
                   href="cv/lien-kim-cv.pdf"
                   target="_blank"
+                  rel="noopener noreferrer"
                   class="nav-link"
                   data-content="navigation.cv"
                   >CV</a
@@ -34,6 +35,7 @@
                 <a
                   href="https://www.linkedin.com/in/lienkt0110/"
                   target="_blank"
+                  rel="noopener noreferrer"
                   class="nav-link show-desktop"
                   data-content="navigation.linkedin"
                   >LinkedIn</a
@@ -51,6 +53,7 @@
                 <a
                   href="https://github.com/lienkt"
                   target="_blank"
+                  rel="noopener noreferrer"
                   class="nav-link show-desktop"
                   data-content="navigation.github"
                   >Github</a
@@ -120,7 +123,7 @@
         </div>
         <div class="gallery-wrapper">
           <div class="gallery-content">
-            <button id="backBtn">
+            <button id="backBtn" type="button" aria-label="Previous projects">
               <svg
                 width="16"
                 height="16"
@@ -134,47 +137,8 @@
                 <polyline points="15 18 9 12 15 6"></polyline>
               </svg>
             </button>
-            <div class="image-container" id="imageContainer">
-              <div class="image-wrapper">
-                <img
-                  src="assets/img/orange-opportunities.png"
-                  alt="Opportunities Space Innovation Orange Business project"
-                />
-              </div>
-              <div class="image-wrapper">
-                <img
-                  src="assets/img/railpulse.png"
-                  alt="RailPulse SNCB GenAI project"
-                />
-              </div>
-              <div class="image-wrapper">
-                <img
-                  src="assets/img/immo-eliza.png"
-                  alt="Belgian House Price Estimation project"
-                />
-              </div>
-              <div class="image-wrapper">
-                <img src="assets/img/react_quiz_app.png" />
-              </div>
-              <div class="image-wrapper">
-                <img src="assets/img/issues_tracker.png" />
-              </div>
-              <div class="image-wrapper">
-                <img src="assets/img/portfolio.png" />
-              </div>
-              <div class="image-wrapper">
-                <img src="assets/img/sqwad_dashboard.png" />
-              </div>
-              <div class="image-wrapper">
-                <img
-                  src="https://raw.githubusercontent.com/lienkt/QA-Form-Generator-FE/main/project.png"
-                />
-              </div>
-              <!-- <div class="image-wrapper">
-                <img src="assets/img/nhanliencollection.png" />
-              </div> -->
-            </div>
-            <button id="nextBtn">
+            <div class="image-container" id="imageContainer"></div>
+            <button id="nextBtn" type="button" aria-label="Next projects">
               <svg
                 width="16"
                 height="16"
@@ -223,28 +187,11 @@
         <div
           id="projectsContainer"
           class="projects-section-container width-lg-screen"
-        >
-          <!-- <div class="item">
-          <p class="note">Note: Buit at Sqwad</p>
-          <img
-            src="assets/img/sqwad_dashboard.png"
-            alt="Sample Image"
-            class="image"
-          />
-          <h2 class="title">Sqwad Dashboard</h2>
-          <p class="description">This is a short description of the item.</p>
-          <div class="tags">
-            <span class="tag">Tag 1</span>
-            <span class="tag">Another Tag</span>
-            <span class="tag">Short</span>
-            <span class="tag">Very Long Tag Example</span>
-          </div>
-        </div>-->
-        </div>
+        ></div>
       </section>
       <section id="about" class="about-section">
         <div class="image-vertical-crop">
-          <img class="background" src="assets/img/background1.jpg" />
+          <img class="background" src="assets/img/background1.jpg" alt="" />
         </div>
         <div class="content">
           <div class="mac-window width-lg-screen">
@@ -303,7 +250,7 @@
         >Email me</a
       >
       <p class="copyright" data-content="footer.copyright">
-        © 2025 Lien KIM. All Rights Reserved.
+        © 2026 Lien KIM. All Rights Reserved.
       </p>
     </footer>
     <script src="assets/js/content.js"></script>
