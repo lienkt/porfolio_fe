@@ -37,9 +37,27 @@ companiesContainer.innerHTML = PORTFOLIO_CONTENT.experience.companies
           <div>
             <h3>${company.name}</h3>
             <p>${company.detail}</p>
+            <p class="company-period">${company.period}</p>
           </div>
         </article>
       </a>`,
+  )
+  .join("");
+
+const educationContainer = document.getElementById("educationContainer");
+educationContainer.innerHTML = PORTFOLIO_CONTENT.experience.education
+  .map(
+    (education) => `
+      <article class="education-item">
+        <div class="education-topline">
+          <h3>${education.school}</h3>
+          <span>${education.location}</span>
+        </div>
+        <div class="education-details">
+          <p>${education.degree}, Major: ${education.major}</p>
+          <time>${education.period}</time>
+        </div>
+      </article>`,
   )
   .join("");
 

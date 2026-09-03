@@ -4,7 +4,7 @@ const PORTFOLIO_CONTENT = {
   site: {
     pageTitle: "Lien KIM - Software Developer",
     name: "Lien KIM",
-    role: "Hello, I am Liên.<br><span>GenAI Developer | Software Developer.</span>",
+    role: "Hi, I am Lien.<br><span>GenAI Developer | Software Developer.</span>",
   },
   navigation: {
     cv: "CV",
@@ -57,11 +57,29 @@ const PORTFOLIO_CONTENT = {
         items: ["Node.js", "Django", "PostgreSQL", "Docker", "Git"],
       },
     ],
+    educationTitle: "Education",
+    education: [
+      {
+        school: "EPITA",
+        location: "Le Kremlin-Bicêtre, Paris, France",
+        degree: "Master of Science in Computer Science",
+        major: "Software Engineering",
+        period: "Oct. 2020 – Apr. 2022",
+      },
+      {
+        school: "University of Science, Ho Chi Minh City",
+        location: "Ho Chi Minh City, Vietnam",
+        degree: "Bachelor of Science in Physics",
+        major: "Physics and Computer Science",
+        period: "Oct. 2012 – Oct. 2016",
+      },
+    ],
     companiesTitle: "Where I've built and learned",
     companies: [
       {
         name: "BeCode",
         detail: "AI & Data Science Training · Brussels",
+        period: "May 2026 – Present",
         logo: "assets/img/becode_logo.jpeg",
         className: "becode",
         link: "https://becode.org/",
@@ -69,6 +87,7 @@ const PORTFOLIO_CONTENT = {
       {
         name: "Sqwad",
         detail: "Software Engineering · Paris",
+        period: "Jul. 2022 – Jul. 2023",
         logo: "assets/img/joinsqwad_logo.jpeg",
         className: "sqwad",
         link: "https://www.linkedin.com/company/joinsqwad/",
@@ -76,6 +95,7 @@ const PORTFOLIO_CONTENT = {
       {
         name: "Hello Pomelo",
         detail: "Software Engineering · Paris",
+        period: "Sep. 2021 – Mar. 2022",
         logo: "assets/img/hello_pomelo_digital_logo.jpeg",
         className: "hp",
         link: "https://www.linkedin.com/company/hello-pomelo-digital/",
@@ -83,6 +103,7 @@ const PORTFOLIO_CONTENT = {
       {
         name: "FPT Software",
         detail: "Software Engineering · Ho Chi Minh City",
+        period: "Dec. 2019 – Jul. 2020",
         logo: "assets/img/fpt_software_logo.jpeg",
         className: "fpt",
         link: "https://www.linkedin.com/company/fpt-software/",
@@ -90,6 +111,7 @@ const PORTFOLIO_CONTENT = {
       {
         name: "Axon Active",
         detail: "Software Engineering · Ho Chi Minh City",
+        period: "Aug. 2018 – Aug. 2019",
         logo: "assets/img/axonactive_logo.jpeg",
         className: "axon",
         link: "https://www.linkedin.com/company/axonactive/",
@@ -97,6 +119,7 @@ const PORTFOLIO_CONTENT = {
       {
         name: "IVC",
         detail: "Software Engineering · Ho Chi Minh City",
+        period: "Jul. 2016 – Jul. 2018",
         logo: "assets/img/isb_vietnam_co_limited_logo.jpeg",
         className: "ivc",
         link: "https://www.linkedin.com/company/isb-vietnam-co.-limited/",
