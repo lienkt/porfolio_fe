@@ -321,11 +321,16 @@ body {
 
   .hero-visual {
     min-height: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 
   .hero-visual .avatar-wrapper {
     width: min(80%, 360px);
     height: auto;
+    margin-right: auto;
+    margin-left: auto;
     aspect-ratio: 4 / 5;
   }
 }
