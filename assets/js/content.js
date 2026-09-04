@@ -4,7 +4,7 @@ const PORTFOLIO_CONTENT = {
   site: {
     pageTitle: "Lien KIM - Software Developer",
     name: "Lien KIM",
-    role: "Hi, I am Lien.<br><span>GenAI Developer | Software Developer.</span>",
+    role: "Hi, I am Lien!<br><span>GenAI Developer | Software Developer.</span>",
   },
   navigation: {
     cv: "CV",
