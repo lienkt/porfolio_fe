@@ -17,11 +17,29 @@
   "skills": [
     {
       "category": "Generative AI & Data",
-      "items": ["LLMs", "RAG", "AI Agents", "Prompt Engineering", "Machine Learning", "Python", "NumPy", "Power BI"]
+      "items": [
+        "LLMs",
+        "RAG",
+        "AI Agents",
+        "Prompt Engineering",
+        "Machine Learning",
+        "Python",
+        "NumPy",
+        "Power BI"
+      ]
     },
     {
       "category": "Front-End",
-      "items": ["React", "TypeScript", "JavaScript", "Redux", "HTML5", "CSS3", "Tailwind CSS", "MUI"]
+      "items": [
+        "React",
+        "TypeScript",
+        "JavaScript",
+        "Redux",
+        "HTML5",
+        "CSS3",
+        "Tailwind CSS",
+        "MUI"
+      ]
     },
     {
       "category": "Back-End & Data",
@@ -29,22 +47,77 @@
     },
     {
       "category": "Testing & Tools",
-      "items": ["React Testing Library", "Cypress", "Jest", "Git", "GitHub", "Docker", "Figma"]
+      "items": [
+        "React Testing Library",
+        "Cypress",
+        "Jest",
+        "Git",
+        "GitHub",
+        "Docker",
+        "Figma"
+      ]
     }
   ],
-  "languages": ["Vietnamese (Native)", "English (Working proficiency)", "French (Basic — A2)"],
+  "languages": ["English (Fluently)", "French (Basic — A2)"],
   "technology_terms": [
-    "Generative AI", "Machine Learning", "Business Intelligence", "Azure App Service",
-    "FastAPI", "React Testing Library",
-    "Prompt Engineering", "AI Agents", "REST APIs", "TypeScript", "JavaScript",
-    "PostgreSQL", "Microservices", "Tailwind CSS", "Power BI", "Node.js",
-    "Data Science", "Data Analysis", "React", "Redux", "HTML5", "CSS3", "HTML", "CSS", "Tailwind",
-    "Django", "MongoDB", "Cypress", "CakePHP", "Java Spring", "WordPress",
-    "Streamlit", "Flutter", "Python", "NumPy", "Figma", "Docker", "GitHub",
-    "Text-to-SQL", "SQL Guardrails", "Groq API", "Azure SQL", "Prompt Engineering",
-    "Scikit-learn", "XGBoost", "REST API", "jQuery", "Ollama", "Llama", "SQLite",
-    "Pandas", "Render", "Odoo",
-    "SQL", "PHP", "Jest", "LLMs", "RAG"
+    "Generative AI",
+    "Machine Learning",
+    "Business Intelligence",
+    "Azure App Service",
+    "FastAPI",
+    "React Testing Library",
+    "Prompt Engineering",
+    "AI Agents",
+    "REST APIs",
+    "TypeScript",
+    "JavaScript",
+    "PostgreSQL",
+    "Microservices",
+    "Tailwind CSS",
+    "Power BI",
+    "Node.js",
+    "Data Science",
+    "Data Analysis",
+    "React",
+    "Redux",
+    "HTML5",
+    "CSS3",
+    "HTML",
+    "CSS",
+    "Tailwind",
+    "Django",
+    "MongoDB",
+    "Cypress",
+    "CakePHP",
+    "Java Spring",
+    "WordPress",
+    "Streamlit",
+    "Flutter",
+    "Python",
+    "NumPy",
+    "Figma",
+    "Docker",
+    "GitHub",
+    "Text-to-SQL",
+    "SQL Guardrails",
+    "Groq API",
+    "Azure SQL",
+    "Prompt Engineering",
+    "Scikit-learn",
+    "XGBoost",
+    "REST API",
+    "jQuery",
+    "Ollama",
+    "Llama",
+    "SQLite",
+    "Pandas",
+    "Render",
+    "Odoo",
+    "SQL",
+    "PHP",
+    "Jest",
+    "LLMs",
+    "RAG"
   ],
   "experience": [
     {
@@ -135,7 +208,15 @@
         "Built a platform that helps Orange Business discover, assess, and prioritize innovation opportunities from market data, research, regulations, and public tenders.",
         "Connected evidence to each opportunity, calculated Attractiveness and Right-to-Win scores using transparent criteria, and used Generative AI only for evidence-backed proposals, summaries, and descriptions."
       ],
-      "technologies": ["Python", "FastAPI", "React", "TypeScript", "SQLite", "Generative AI", "Azure App Service"],
+      "technologies": [
+        "Python",
+        "FastAPI",
+        "React",
+        "TypeScript",
+        "SQLite",
+        "Generative AI",
+        "Azure App Service"
+      ],
       "github_url": "https://github.com/lienkt/orange",
       "live_url": ""
     },
@@ -145,7 +226,21 @@
         "Built a Generative AI assistant that lets railway operators query data in natural language instead of writing SQL.",
         "Converted questions into safe Text-to-SQL queries, analyzed results, and generated clear operational recommendations with SQL guardrails and restricted data access."
       ],
-      "technologies": ["Python", "Streamlit", "Generative AI", "Text-to-SQL", "Groq API", "Ollama", "Llama", "Azure SQL", "SQLite", "Pandas", "Power BI", "Prompt Engineering", "SQL Guardrails"],
+      "technologies": [
+        "Python",
+        "Streamlit",
+        "Generative AI",
+        "Text-to-SQL",
+        "Groq API",
+        "Ollama",
+        "Llama",
+        "Azure SQL",
+        "SQLite",
+        "Pandas",
+        "Power BI",
+        "Prompt Engineering",
+        "SQL Guardrails"
+      ],
       "github_url": "https://github.com/lienkt/railpulse-genai-challenge",
       "live_url": ""
     },
@@ -155,7 +250,17 @@
         "Developed and deployed a web application that predicts Belgian real estate prices from location, living area, room count, and property condition.",
         "Built a FastAPI REST API to serve the Machine Learning model and an interactive Streamlit interface for users."
       ],
-      "technologies": ["Python", "XGBoost", "Scikit-learn", "Pandas", "FastAPI", "Streamlit", "REST API", "Docker", "Render"],
+      "technologies": [
+        "Python",
+        "XGBoost",
+        "Scikit-learn",
+        "Pandas",
+        "FastAPI",
+        "Streamlit",
+        "REST API",
+        "Docker",
+        "Render"
+      ],
       "github_url": "https://github.com/lienkt/immo-eliza-deployment",
       "live_url": "https://belgian-immo-eliza.streamlit.app/"
     }
