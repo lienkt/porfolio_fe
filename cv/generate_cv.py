@@ -12,6 +12,7 @@ import shutil
 import subprocess
 import sys
 import tempfile
+import time
 from pathlib import Path
 from typing import Any
 
@@ -64,6 +65,7 @@ def validate(data: dict[str, Any]) -> list[str]:
             "github_url",
             "website",
             "website_url",
+            "availability",
         ):
             require_string(basics, key, "basics", errors)
 
@@ -165,6 +167,7 @@ def render_header(basics: dict[str, str]) -> str:
             <span>|</span>
             <a href="{text(basics['github_url'])}">GitHub: {text(basics['github'])}</a>
           </p>
+          <p class="availability">{text(basics['availability'])}</p>
         </header>"""
 
 
@@ -297,7 +300,10 @@ def export_pdf(html_file: Path, pdf_file: Path) -> None:
         raise RuntimeError(
             "Google Chrome/Chromium was not found. Install it or set CV_CHROME_BIN to its executable path."
         )
-    with tempfile.TemporaryDirectory(prefix="cv-chrome-") as profile_dir:
+    # Use a fresh output so an existing PDF cannot be mistaken for a new export.
+    with tempfile.TemporaryDirectory(prefix="cv-export-", dir=pdf_file.parent) as work_dir:
+        output = Path(work_dir) / "cv.pdf"
+        profile_dir = Path(work_dir) / "profile"
         command = [
             chrome,
             "--headless",
@@ -306,13 +312,55 @@ def export_pdf(html_file: Path, pdf_file: Path) -> None:
             "--disable-extensions",
             "--no-pdf-header-footer",
             f"--user-data-dir={profile_dir}",
-            f"--print-to-pdf={pdf_file}",
+            f"--print-to-pdf={output.resolve()}",
             html_file.resolve().as_uri(),
         ]
-        result = subprocess.run(command, capture_output=True, text=True, timeout=90, check=False)
-    if result.returncode != 0 or not pdf_file.is_file() or pdf_file.stat().st_size == 0:
-        details = (result.stderr or result.stdout).strip()
-        raise RuntimeError(f"Chrome could not generate the PDF.\n{details}")
+        with tempfile.TemporaryFile(mode="w+b") as log:
+            process = subprocess.Popen(
+                command, stdout=log, stderr=log, start_new_session=True
+            )
+            deadline = time.monotonic() + 90
+            previous = b""
+            completed = False
+            try:
+                while time.monotonic() < deadline:
+                    content = output.read_bytes() if output.is_file() else b""
+                    # Chrome may keep running after printing. Require a complete,
+                    # unchanged PDF across polls before stopping our browser.
+                    if (
+                        content.startswith(b"%PDF-")
+                        and content.rstrip().endswith(b"%%EOF")
+                        and content == previous
+                    ):
+                        completed = True
+                        break
+                    previous = content
+                    if process.poll() is not None and not content:
+                        break
+                    time.sleep(0.5)
+            finally:
+                # Stop only the browser launched for this export.
+                if process.poll() is None:
+                    process.terminate()
+                    try:
+                        process.wait(timeout=5)
+                    except subprocess.TimeoutExpired:
+                        process.kill()
+                        process.wait()
+            if not completed:
+                log.seek(0)
+                details = log.read().decode("utf-8", errors="replace").strip()
+                raise RuntimeError(
+                    "Chrome did not produce a complete PDF within 90 seconds "
+                    f"or exited before exporting.\n{details}"
+                )
+        pages = pdf_page_count(output)
+        if pages != 2:
+            raise RuntimeError(
+                f"Expected a 2-page PDF but generated {pages} page(s). "
+                "Adjust content or layout before publishing."
+            )
+        output.replace(pdf_file)
 
 
 def pdf_page_count(pdf_file: Path) -> int:

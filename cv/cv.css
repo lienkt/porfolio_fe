@@ -50,6 +50,10 @@ h1 {
   font-weight: 600;
 }
 
+.resume-header .availability {
+  margin-top: 1.2mm;
+}
+
 .website-link,
 .project-links .live-link {
   color: #075d70;

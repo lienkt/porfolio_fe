@@ -33,7 +33,6 @@ const PORTFOLIO_CONTENT = {
           "AI Agents",
           "Prompt Engineering",
           "Machine Learning",
-          "Python",
           "NumPy",
           "Power BI",
         ],
@@ -54,7 +53,7 @@ const PORTFOLIO_CONTENT = {
       {
         icon: "◇",
         title: "Back-End & Tools",
-        items: ["Node.js", "Django", "PostgreSQL", "Docker", "Git"],
+        items: ["Python", "Node.js", "Django", "PostgreSQL", "Docker", "Git"],
       },
     ],
     educationTitle: "Education",
@@ -109,7 +108,7 @@ const PORTFOLIO_CONTENT = {
         role: "Software Engineer",
         location: "Paris, France",
         responsibilities: [
-          "Led frontend development using React for Admin Squad and Shopify Squad apps, successfully adopted by several Shopify clients in France, helping streamline collaboration and reduce customer acquisition costs.",
+          "Led frontend development using React for Admin Sqwad and Shopify Sqwad apps, successfully adopted by several Shopify clients in France, helping streamline collaboration and reduce customer acquisition costs.",
           "Translated Figma designs into responsive, user-friendly interfaces and integrated them seamlessly with backend APIs.",
           "Developed scalable frontend architectures using React, TypeScript, JavaScript, Redux, HTML, CSS, and Tailwind.",
           "Supported backend development using Django (Python) by collaborating on API design, fixing bugs, and adapting endpoints to align with frontend requirements.",
@@ -299,7 +298,7 @@ const PORTFOLIO_CONTENT = {
       img: "assets/img/portfolio.png",
       background_color: "green",
       github_link: "https://github.com/lienkt/porfolio_fe",
-      live_link: "https://lienkim.info/",
+      live_link: "https://lienkim.com/",
       title: "Portfolio Website",
       description:
         "A web application fully developed using HTML5, CSS3, and JavaScript, showcasing my ability to build responsive websites with a modern, user-friendly interface that performs smoothly across all devices.",

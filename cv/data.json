@@ -2,7 +2,7 @@
   "schema_version": 1,
   "last_updated": "2026-09-03",
   "basics": {
-    "name": "Thi Lien kin",
+    "name": "Lien Kim",
     "phone": "+32 470 17 88 70",
     "phone_href": "+32470178870",
     "email": "lienkt0110@gmail.com",
@@ -10,8 +10,9 @@
     "linkedin_url": "https://www.linkedin.com/in/lienkt0110/",
     "github": "github.com/lienkt",
     "github_url": "https://github.com/lienkt",
-    "website": "lienkim.info",
-    "website_url": "https://lienkim.info/"
+    "website": "lienkim.com",
+    "website_url": "https://lienkim.com/",
+    "availability": "Available immediately · Belgian work permit"
   },
   "summary": "Software Engineer with 5+ years of Front-End experience, combining a strong foundation in React, TypeScript, and modern web development with Python, Machine Learning, LLMs, RAG, and AI agents. Passionate about building practical, scalable, and user-focused AI products.",
   "skills": [
@@ -43,7 +44,14 @@
     },
     {
       "category": "Back-End & Data",
-      "items": ["Node.js", "Django", "PostgreSQL", "MongoDB", "REST APIs"]
+      "items": [
+        "Python",
+        "Node.js",
+        "Django",
+        "PostgreSQL",
+        "MongoDB",
+        "REST APIs"
+      ]
     },
     {
       "category": "Testing & Tools",
@@ -137,7 +145,7 @@
       "period": "Jul. 2022 – Jul. 2023",
       "location": "Paris, France",
       "bullets": [
-        "Led React frontend development for Admin Squad and Shopify Squad apps adopted by several Shopify clients in France.",
+        "Led React frontend development for Admin Sqwad and Shopify Sqwad apps adopted by several Shopify clients in France.",
         "Translated Figma designs into responsive interfaces and integrated them with backend APIs.",
         "Developed scalable frontend architecture with React, TypeScript, Redux, HTML, CSS, and Tailwind.",
         "Supported Django API design and authored unit tests with React Testing Library."
@@ -218,30 +226,6 @@
         "Azure App Service"
       ],
       "github_url": "https://github.com/lienkt/orange",
-      "live_url": ""
-    },
-    {
-      "name": "RailPulse — SNCB GenAI Challenge",
-      "bullets": [
-        "Built a Generative AI assistant that lets railway operators query data in natural language instead of writing SQL.",
-        "Converted questions into safe Text-to-SQL queries, analyzed results, and generated clear operational recommendations with SQL guardrails and restricted data access."
-      ],
-      "technologies": [
-        "Python",
-        "Streamlit",
-        "Generative AI",
-        "Text-to-SQL",
-        "Groq API",
-        "Ollama",
-        "Llama",
-        "Azure SQL",
-        "SQLite",
-        "Pandas",
-        "Power BI",
-        "Prompt Engineering",
-        "SQL Guardrails"
-      ],
-      "github_url": "https://github.com/lienkt/railpulse-genai-challenge",
       "live_url": ""
     },
     {
