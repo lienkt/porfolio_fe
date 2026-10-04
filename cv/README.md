@@ -27,7 +27,7 @@ python3 cv/generate_cv.py
 This validates the data and regenerates both files:
 
 - `cv/index.html`: the CV webpage.
-- `cv/lien-kim-cv.pdf`: the PDF opened by the portfolio's CV button.
+- `cv/LienKim_CV.pdf`: the PDF opened by the portfolio's CV button.
 
 Review the PDF before publishing. It must contain exactly **2 pages**. If the generator reports a different page count, shorten the content or adjust the layout, then run it again.
 
@@ -56,7 +56,7 @@ python3 -m http.server 8000
 ```
 
 - CV webpage: [localhost:8000/cv/](http://localhost:8000/cv/)
-- CV PDF: [localhost:8000/cv/lien-kim-cv.pdf](http://localhost:8000/cv/lien-kim-cv.pdf)
+- CV PDF: [localhost:8000/cv/LienKim_CV.pdf](http://localhost:8000/cv/LienKim_CV.pdf)
 
 Refresh the browser after regenerating the CV. Press `Ctrl+C` in the terminal to stop the server.
 

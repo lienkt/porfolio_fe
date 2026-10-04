@@ -12,9 +12,9 @@
     "github_url": "https://github.com/lienkt",
     "website": "lienkim.com",
     "website_url": "https://lienkim.com/",
-    "availability": "Available immediately · Belgian work permit"
+    "availability": "Available from November 2026 · Authorized to work in Belgium"
   },
-  "summary": "Software Engineer with 5+ years of Front-End experience, combining a strong foundation in React, TypeScript, and modern web development with Python, Machine Learning, LLMs, RAG, and AI agents. Passionate about building practical, scalable, and user-focused AI products.",
+  "summary": "Software Engineer with 5+ years of experience building full-stack and AI-powered applications. Combines React and TypeScript with Python, FastAPI, LLMs, RAG, and AI agents to build production-oriented solutions. Experienced in leading small project teams, integrating data and AI pipelines, and turning business requirements into practical applications.",
   "skills": [
     {
       "category": "Generative AI & Data",
@@ -134,9 +134,9 @@
       "period": "May 2026 – Present",
       "location": "Brussels, Belgium · Hybrid",
       "bullets": [
-        "Developing practical skills in Python, Machine Learning, Generative AI, and software development.",
-        "Collaborating on real-world AI and data projects using industry-standard tools and workflows.",
-        "Designing AI-powered applications, data pipelines, and solutions focused on LLMs, automation, and analytics."
+        "Developing practical Generative AI skills with a focus on LLMs, RAG, AI Agents, and Prompt Engineering.",
+        "Designing AI-powered applications and data pipelines with Python, focusing on LLM-based automation and analytics.",
+        "Collaborating on real-world AI and data projects, combining Generative AI, Machine Learning, and software development."
       ]
     },
     {
@@ -211,10 +211,33 @@
   ],
   "projects": [
     {
-      "name": "Orange Business — Innovation Radar",
+      "name": "Banking Campaigns Comparator — ING Challenge",
+      "period": "14 Sep. 2026 – Present",
       "bullets": [
-        "Built a platform that helps Orange Business discover, assess, and prioritize innovation opportunities from market data, research, regulations, and public tenders.",
-        "Connected evidence to each opportunity, calculated Attractiveness and Right-to-Win scores using transparent criteria, and used Generative AI only for evidence-backed proposals, summaries, and descriptions."
+        "Led a three-person team in building a full-stack platform to analyze and compare banking product communication across multiple Belgian banks.",
+        "Built the React/TypeScript frontend and FastAPI/PostgreSQL backend, and integrated automated scraping and labeling pipelines into a unified workflow.",
+        "Designed interactive comparisons connecting webpage evidence with human-reviewed labels across messaging, visuals, layout, and calls to action."
+      ],
+      "technologies": [
+        "Python",
+        "FastAPI",
+        "React",
+        "TypeScript",
+        "PostgreSQL",
+        "SQLAlchemy",
+        "Playwright",
+        "Docker"
+      ],
+      "github_url": "https://github.com/lienkt/ing-project",
+      "live_url": ""
+    },
+    {
+      "name": "Orange Business — Innovation Radar",
+      "period": "17 Aug. 2026 – Present",
+      "bullets": [
+        "Contributed to a three-person team developing an AI-powered Innovation Radar for Orange Business, designed to identify and prioritize opportunities from market, research, regulatory, and public-tender signals.",
+        "Supported the development of the full-stack application and data visualizations for exploring and presenting scored opportunities.",
+        "Contributed to the integration and presentation of Generative AI outputs, including evidence-grounded proposals, summaries, and opportunity descriptions."
       ],
       "technologies": [
         "Python",
@@ -230,9 +253,11 @@
     },
     {
       "name": "Immo Eliza — Belgian Real Estate Price Prediction",
+      "period": "15 June – Present",
       "bullets": [
         "Developed and deployed a web application that predicts Belgian real estate prices from location, living area, room count, and property condition.",
-        "Built a FastAPI REST API to serve the Machine Learning model and an interactive Streamlit interface for users."
+        "Built a FastAPI REST API to serve the Machine Learning model and an interactive Streamlit interface for users.",
+        "Trained and evaluated regression models on 15K+ Belgian property records and deployed the selected model through a FastAPI REST API."
       ],
       "technologies": [
         "Python",
@@ -250,7 +275,7 @@
     }
   ],
   "layout": {
-    "experience_items_on_page_one": 4,
-    "pdf_filename": "lien-kim-cv.pdf"
+    "experience_items_on_page_one": 0,
+    "pdf_filename": "LienKim_CV.pdf"
   }
 }

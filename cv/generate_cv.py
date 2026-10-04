@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Validate CV data, render cv/index.html, and export cv/lien-kim-cv.pdf."""
+"""Validate CV data, render cv/index.html, and export cv/LienKim_CV.pdf."""
 
 from __future__ import annotations
 
@@ -105,7 +105,7 @@ def validate(data: dict[str, Any]) -> list[str]:
 
     for section_name, required_fields in (
         ("education", ("school", "location", "degree", "period")),
-        ("projects", ("name",)),
+        ("projects", ("name", "period")),
     ):
         items = data.get(section_name)
         if not isinstance(items, list) or not items:
@@ -137,7 +137,7 @@ def validate(data: dict[str, Any]) -> list[str]:
     else:
         split = layout.get("experience_items_on_page_one")
         count = len(experiences) if isinstance(experiences, list) else 0
-        if not isinstance(split, int) or not 1 <= split < count:
+        if not isinstance(split, int) or not 0 <= split < count:
             errors.append("layout.experience_items_on_page_one must split the experience list")
         require_string(layout, "pdf_filename", "layout", errors)
         if isinstance(layout.get("pdf_filename"), str) and Path(layout["pdf_filename"]).name != layout["pdf_filename"]:
@@ -156,16 +156,16 @@ def render_header(basics: dict[str, str]) -> str:
     return f"""<header class="resume-header">
           <h1>{text(basics['name'])}</h1>
           <p>
-            <a href="tel:{text(basics['phone_href'])}">{text(basics['phone'])}</a>
+            <a target="_blank" rel="noopener noreferrer" href="tel:{text(basics['phone_href'])}">{text(basics['phone'])}</a>
             <span>|</span>
-            <a href="mailto:{text(basics['email'])}">{text(basics['email'])}</a>
+            <a target="_blank" rel="noopener noreferrer" href="mailto:{text(basics['email'])}">{text(basics['email'])}</a>
             <span>|</span>
-            <a href="{text(basics['linkedin_url'])}">{text(basics['linkedin'])}</a>
+            <a target="_blank" rel="noopener noreferrer" href="{text(basics['linkedin_url'])}">{text(basics['linkedin'])}</a>
           </p>
           <p class="profile-links">
-            <a class="website-link" href="{text(basics['website_url'])}">Portfolio: {text(basics['website'])}</a>
+            <a target="_blank" rel="noopener noreferrer" class="website-link" href="{text(basics['website_url'])}">Portfolio: {text(basics['website'])}</a>
             <span>|</span>
-            <a href="{text(basics['github_url'])}">GitHub: {text(basics['github'])}</a>
+            <a target="_blank" rel="noopener noreferrer" href="{text(basics['github_url'])}">GitHub: {text(basics['github'])}</a>
           </p>
           <p class="availability">{text(basics['availability'])}</p>
         </header>"""
@@ -230,13 +230,14 @@ def render(data: dict[str, Any]) -> str:
         links = []
         if item["github_url"]:
             github_url = text(item["github_url"])
-            links.append(f'<a href="{github_url}">GitHub ↗</a>')
+            links.append(f'<a target="_blank" rel="noopener noreferrer" href="{github_url}">GitHub ↗</a>')
         if item["live_url"]:
             live_url = text(item["live_url"])
-            links.append(f'<a class="live-link" href="{live_url}">Live demo ↗</a>')
+            links.append(f'<a target="_blank" rel="noopener noreferrer" class="live-link" href="{live_url}">Live demo ↗</a>')
         project_blocks.append(
             f"""          <article class="project">
-            <div class="project-heading"><h3>{text(item['name'])}</h3><span class="project-links">{' · '.join(links)}</span></div>
+            <div class="project-heading"><h3>{text(item['name'])}</h3><time>{text(item['period'])}</time></div>
+            <p class="project-links">{' · '.join(links)}</p>
             <ul>
 {bullet_html}
               <li class="project-technologies"><strong>Technologies:</strong> {text(', '.join(item['technologies']))}</li>
@@ -259,9 +260,9 @@ def render(data: dict[str, Any]) -> str:
         "{{EXPERIENCE_PAGE_ONE}}": f"""<section>
           <h2>Experience</h2>
           {first_jobs}
-        </section>""",
+        </section>""" if first_jobs else "",
         "{{EXPERIENCE_PAGE_TWO}}": f"""<section>
-          <h2>Experience <small>(continued)</small></h2>
+          <h2>Experience{' <small>(continued)</small>' if first_jobs else ''}</h2>
           {remaining_jobs}
         </section>""",
         "{{EDUCATION}}": f"""<section>
@@ -274,7 +275,9 @@ def render(data: dict[str, Any]) -> str:
         </section>""",
     }
     for marker, value in replacements.items():
-        template = template.replace(marker, value)
+        template = template.replace(marker, value) if value else re.sub(
+            rf"^[ \t]*{re.escape(marker)}[ \t]*\n", "", template, flags=re.MULTILINE
+        )
     unresolved = re.findall(r"{{[A-Z0-9_]+}}", template)
     if unresolved:
         raise ValueError(f"Unresolved template markers: {', '.join(unresolved)}")

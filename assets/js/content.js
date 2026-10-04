@@ -15,7 +15,7 @@ const PORTFOLIO_CONTENT = {
   },
   hero: {
     intro:
-      "I'm a Software Engineer with 5+ years of Front-End experience, passionate about building great user experiences and exploring what’s possible with Generative AI. I combine my experience in React, TypeScript, and modern web development with LLMs, RAG, and AI agents to build practical, intelligent, and user-focused products.",
+      "I'm a Software Engineer with 5+ years of experience building full-stack and AI-powered applications. Combines React and TypeScript with Python, FastAPI, LLMs, RAG, and AI agents to build production-oriented solutions. Experienced in leading small project teams, integrating data and AI pipelines, and turning business requirements into practical applications.",
     primaryButton: "Email me",
     secondaryButton: "Read my projects",
   },
@@ -26,34 +26,66 @@ const PORTFOLIO_CONTENT = {
     skillGroups: [
       {
         icon: "✦",
-        title: "Generative AI & Data",
+        title: "Generative AI",
         items: [
           "LLMs",
           "RAG",
           "AI Agents",
           "Prompt Engineering",
-          "Machine Learning",
+          "Embeddings",
+          "Vector Search",
+        ],
+      },
+      {
+        icon: "◈",
+        title: "AI & Data",
+        items: [
+          "Python",
+          "Pandas",
           "NumPy",
+          "Scikit-learn",
+          "XGBoost",
+          "Machine Learning",
           "Power BI",
         ],
       },
       {
         icon: "◫",
-        title: "Front-End Engineering",
+        title: "Front-End",
         items: [
           "React",
           "TypeScript",
           "JavaScript",
           "Redux",
           "Tailwind CSS",
-          "HTML",
-          "CSS",
+          "MUI",
         ],
       },
       {
         icon: "◇",
-        title: "Back-End & Tools",
-        items: ["Python", "Node.js", "Django", "PostgreSQL", "Docker", "Git"],
+        title: "Back-End & Data",
+        items: [
+          "FastAPI",
+          "Django",
+          "Node.js",
+          "PostgreSQL",
+          "MongoDB",
+          "REST APIs",
+        ],
+      },
+      {
+        icon: "⚙",
+        title: "Tools & Testing",
+        items: [
+          "Git",
+          "GitHub",
+          "Docker",
+          "Playwright",
+          "Cypress",
+          "Jest",
+          "React Testing Library",
+          "Figma",
+        ],
       },
     ],
     educationTitle: "Education",
@@ -202,6 +234,27 @@ const PORTFOLIO_CONTENT = {
   projectsHeading: "My projects",
   projects: [
     {
+      id: "project-banking-campaigns",
+      note: "Note: Challenge project",
+      img: "assets/img/banking-campaigns.png",
+      background_color: "yellow",
+      github_link: "https://github.com/lienkt/ing-project",
+      live_link: "",
+      title: "Banking Campaigns Comparator — ING Challenge",
+      description:
+        "Led a three-person team in building a full-stack platform to analyze and compare banking product communication across multiple Belgian banks. Built the React/TypeScript frontend and FastAPI/PostgreSQL backend, and integrated automated scraping and labeling pipelines into a unified workflow. Designed interactive comparisons connecting webpage evidence with human-reviewed labels across messaging, visuals, layout, and calls to action.",
+      tags: [
+        "Python",
+        "FastAPI",
+        "React",
+        "TypeScript",
+        "PostgreSQL",
+        "SQLAlchemy",
+        "Playwright",
+        "Docker",
+      ],
+    },
+    {
       id: "project-0",
       note: "Note: Challenge project",
       img: "assets/img/orange-opportunities.png",
@@ -210,7 +263,7 @@ const PORTFOLIO_CONTENT = {
       live_link: "",
       title: "Orange Business — Innovation Radar",
       description:
-        "Orange Innovation Radar helps Orange Business discover, assess, and prioritize innovation opportunities from market data, research, regulations, and public tenders. The platform collects and connects evidence to each opportunity, scores Attractiveness and Right to Win using transparent criteria, and uses AI only to propose, summarize, and describe evidence-backed opportunities.",
+        "Contributed to a three-person team developing an AI-powered Innovation Radar for Orange Business, designed to identify and prioritize opportunities from market, research, regulatory, and public-tender signals. Supported the development of the full-stack application and data visualizations for exploring and presenting scored opportunities. Contributed to the integration and presentation of Generative AI outputs, including evidence-grounded proposals, summaries, and opportunity descriptions.",
       tags: [
         "Python",
         "FastAPI",
@@ -256,7 +309,7 @@ const PORTFOLIO_CONTENT = {
       live_link: "https://belgian-immo-eliza.streamlit.app/",
       title: "Immo Eliza — Belgian Real Estate Price Prediction",
       description:
-        "Developed and deployed a web application that predicts Belgian real estate prices from property attributes such as location, living area, number of rooms, and condition. Built a REST API to serve the Machine Learning model and an interactive Streamlit interface for users.",
+        "Developed and deployed a web application that predicts Belgian real estate prices from property attributes such as location, living area, number of rooms, and condition. Built a REST API to serve the Machine Learning model and an interactive Streamlit interface for users. Trained and evaluated regression models on 15K+ Belgian property records and deployed the selected model through a FastAPI REST API.",
       tags: [
         "Python",
         "XGBoost",

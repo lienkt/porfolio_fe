@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Application Workspace — JD & Cover Letter</title>
+  <link rel="stylesheet" href="styles.css?v=joblist-design-3">
+  <script type="module" src="js/app.js?v=joblist-design-3"></script>
+</head>
+<body data-view="detail">
+  <header class="topbar"><a href="../">← Portfolio</a><span>Application workspace</span><div class="topbar-actions"><span id="profile-status">Loading profile…</span><button id="show-detail" class="secondary" type="button" aria-controls="workspace" aria-pressed="true">Add job</button><button id="show-jobs" class="primary" type="button" aria-controls="panel-jobs" aria-expanded="false">Joblist <span id="saved-count">(0)</span></button></div></header>
+  <main id="workspace" class="workspace">
+    <section class="input-panel" aria-labelledby="input-heading">
+      <div class="eyebrow">YOUR NEXT OPPORTUNITY</div>
+      <h1 id="input-heading">From job description<br>to a stronger application.</h1>
+      <p class="muted">Create a prompt, ask your preferred AI chat, then import its JSON to review your application.</p>
+      <form id="jd-form">
+        <div class="fields"><label>Job title <span>(optional)</span><input id="title" maxlength="200" placeholder="e.g. Full-stack Engineer"></label><label>Company <span>(optional)</span><input id="company" maxlength="200" placeholder="Company name"></label></div>
+        <label class="jd-label" for="jd">Job description <span id="char-count">0 / 30,000</span></label>
+        <textarea id="jd" required minlength="40" maxlength="30000" placeholder="Paste the full job description, including responsibilities, requirements and company context…"></textarea>
+        <p class="source-note">Your prompt includes the JD and CV evidence. Review it before sharing with an AI chat. No API key required.</p>
+        <button id="analyze" type="submit">Analyze job description <span aria-hidden="true">→</span></button>
+        <button id="save-job" class="secondary" type="button">Save job</button>
+        <button id="download-job" class="secondary" type="button">Download JSON</button>
+      </form>
+      <p id="status" role="status" aria-live="polite"></p>
+    </section>
+    <section class="output-panel" aria-label="Application results">
+      <div class="tabs" role="tablist" aria-label="Workspace views">
+        <button id="tab-prompt" role="tab" aria-selected="true" aria-controls="panel-prompt" tabindex="0">Prompt</button>
+        <button id="tab-import" role="tab" aria-selected="false" aria-controls="panel-import" tabindex="-1">Import JSON</button>
+        <button id="tab-analysis" role="tab" aria-selected="false" aria-controls="panel-analysis" tabindex="-1" data-tab="analysis">Analysis</button>
+        <button id="tab-letter" role="tab" aria-selected="false" aria-controls="panel-letter" tabindex="-1" data-tab="letter">Cover Letter</button>
+      </div>
+      <div id="panel-prompt" role="tabpanel" aria-labelledby="tab-prompt" class="panel" tabindex="0">
+        <h2>Your AI prompt</h2><p class="muted">1. Enter the JD and click Analyze. 2. Copy the prompt into ChatGPT or another AI chat. 3. Bring its JSON file back to Import JSON.</p>
+        <div class="actions"><button id="copy-prompt" class="secondary" disabled>Copy prompt</button><button id="download-prompt" class="secondary" disabled>Download prompt</button></div>
+        <label class="sr-only" for="prompt">Generated AI prompt</label><textarea id="prompt" class="prompt-text" readonly placeholder="Your prompt will appear here…"></textarea>
+        <p id="prompt-status" role="status" aria-live="polite"></p>
+      </div>
+      <div id="panel-import" role="tabpanel" aria-labelledby="tab-import" class="panel" tabindex="0" hidden>
+        <h2>Import AI result</h2><p class="muted">Upload application-result.json or paste raw JSON. The app checks the structure, JD quotes and CV references before displaying results. You can also import a previous result if the CV has not changed.</p>
+        <label for="json-file">JSON file</label><input id="json-file" type="file" accept=".json,application/json">
+        <label for="json-input">Or paste JSON</label><textarea id="json-input" class="prompt-text" placeholder='{"version":"1", …}'></textarea>
+        <button id="import-json" class="secondary" disabled>Validate &amp; show results</button>
+        <p id="import-status" role="status" aria-live="polite"></p>
+      </div>
+      <div id="panel-analysis" role="tabpanel" aria-labelledby="tab-analysis" class="panel" tabindex="0" hidden>
+        <div class="empty"><div class="empty-icon" aria-hidden="true">◎</div><h2>A clearer view of your next role</h2><p>Import your AI JSON result to see hiring priorities, evidence, gaps and positioning.</p><div class="empty-steps"><span>01 &nbsp; Understand the role</span><span>02 &nbsp; Find your strongest proof</span><span>03 &nbsp; Tell a relevant story</span></div></div>
+      </div>
+      <div id="panel-letter" role="tabpanel" aria-labelledby="tab-letter" class="panel" tabindex="0" hidden>
+        <div class="letter-head"><div><div class="eyebrow">YOUR APPLICATION</div><h2>Cover letter</h2><p class="muted">An editable draft, grounded in your CV.</p></div><div class="actions"><button id="copy" class="secondary" disabled>Copy</button></div></div>
+        <p id="letter-status" role="status" aria-live="polite">Import an AI result first.</p>
+        <label class="sr-only" for="letter">Editable cover letter</label><textarea id="letter" class="letter" placeholder="Your tailored letter will appear here…" disabled></textarea>
+        <div class="letter-footer"><span id="word-count">0 words · target 300–400</span><span>Review the draft before sending.</span></div>
+        <details id="letter-evidence" hidden><summary>Evidence used in this draft</summary><div id="letter-sources"></div></details>
+      </div>
+    </section>
+  </main>
+  <section id="panel-jobs" class="jobs-page" aria-labelledby="jobs-heading" tabindex="-1" hidden>
+    <div class="jobs-heading"><div><div class="eyebrow">YOUR OPPORTUNITIES</div><h1 id="jobs-heading">Joblist</h1><p class="muted">Track your saved jobs and application progress in one place.</p></div><div class="actions"><button id="back-workspace" class="secondary" type="button">Back to Add job</button><button id="new-job" class="primary" type="button">Add job</button><button id="download-all" class="secondary" type="button" disabled>Download all</button></div></div>
+    <div class="jobs-overview" aria-label="Application overview">
+      <div class="overview-card"><span>Total jobs</span><strong id="total-jobs">0</strong><small>Saved opportunities</small></div>
+      <div class="overview-card"><span>Analyzed</span><strong id="total-analyzed">0</strong><small>AI results saved</small></div>
+      <div class="overview-card"><span>Applied</span><strong id="total-applied">0</strong><small>Applications sent</small></div>
+      <div class="overview-card"><span>Rejected</span><strong id="total-rejected">0</strong><small>Closed applications</small></div>
+    </div>
+    <div class="jobs-filters">
+      <label>Search jobs or companies<input id="jobs-search" type="search" placeholder="Job title or company…"></label>
+      <label>Analyzed<select id="filter-analyzed"><option value="">All</option><option value="yes">Yes</option><option value="no">No</option></select></label>
+      <label>Applied<select id="filter-applied"><option value="">All</option><option value="yes">Yes</option><option value="no">No</option></select></label>
+      <label>Rejected<select id="filter-rejected"><option value="">All</option><option value="yes">Yes</option><option value="no">No</option></select></label>
+      <label>Rows per page<select id="jobs-page-size"><option value="10">10</option><option value="25">25</option><option value="50">50</option></select></label>
+      <button id="clear-filters" class="secondary" type="button">Clear filters</button>
+    </div>
+    <p id="jobs-status" role="status" aria-live="polite"></p>
+    <div id="saved-jobs" class="table-wrap"></div>
+    <nav class="jobs-pagination" aria-label="Saved jobs pagination"><span id="jobs-summary" role="status" aria-live="polite"></span><div class="actions"><button id="jobs-prev" class="secondary" type="button">Previous</button><span id="jobs-page"></span><button id="jobs-next" class="secondary" type="button">Next</button></div></nav>
+    <p class="source-note">Jobs are saved in this browser. Download JSON to keep a backup; clearing browser data removes saved entries.</p>
+  </section>
+</body>
+</html>
