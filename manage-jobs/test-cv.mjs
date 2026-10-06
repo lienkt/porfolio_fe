@@ -1,0 +1,61 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import { readFileSync } from 'node:fs';
+import { createCVEditor, validCV, renderCV } from './js/cv-editor.js';
+const base = JSON.parse(readFileSync(new URL('../cv/data.json', import.meta.url)));
+const template = readFileSync(new URL('../cv/template.html', import.meta.url), 'utf8');
+function editor() {
+  const listeners = {};
+  const container = {innerHTML: '', addEventListener(name, handler) { listeners[name] = handler; }};
+  const instance = createCVEditor(container, () => {});
+  instance.set(base);
+  return {instance, listeners, container};
+}
+test('CV edits, additions, deletions and reordering stay isolated; saved drafts restore', () => {
+  const {instance, listeners} = editor();
+  listeners.input({target: {dataset: {cvField: 'summary'}, value: 'Tailored summary', type: 'text'}});
+  listeners.input({target: {dataset: {cvField: 'basics.name'}, value: 'Candidate', type: 'text'}});
+  const click = dataset => listeners.click({target: {closest: () => ({dataset})}});
+  click({add: 'experience'});
+  assert.equal(instance.get().experience.length, base.experience.length + 1);
+  click({remove: 'experience', index: String(base.experience.length)});
+  click({move: 'experience', index: '0', step: '1'});
+  listeners.input({target: {dataset: {cvField: 'skills.0.items', cvList: 'true'}, value: 'React, TypeScript\nPython, ', type: 'textarea'}});
+  listeners.input({target: {dataset: {cvField: 'projects.0.technologies', cvList: 'true'}, value: 'React, FastAPI, Docker', type: 'textarea'}});
+  click({add: 'skills'});
+  click({remove: 'skills', index: String(base.skills.length)});
+  const saved = JSON.parse(JSON.stringify(instance.get()));
+  assert.equal(saved.summary, 'Tailored summary');
+  assert.equal(saved.basics.name, 'Candidate');
+  assert.equal(saved.experience[1].role, base.experience[0].role);
+  assert.deepEqual(saved.skills[0].items, ['React', 'TypeScript', 'Python']);
+  assert.equal(saved.skills.length, base.skills.length);
+  assert.deepEqual(saved.projects[0].technologies, ['React', 'FastAPI', 'Docker']);
+  assert.equal(validCV(saved, base), true);
+  instance.set(base);
+  assert.equal(instance.get().summary, base.summary);
+  instance.set(saved);
+  assert.deepEqual(instance.get(), saved);
+  assert.equal(base.basics.name, 'Lien Kim');
+});
+test('invalid saved CV shapes are rejected', () => {
+  assert.equal(validCV({...base, experience: [null]}, base), false);
+  assert.equal(validCV({...base, basics: {}}, base), false);
+  assert.equal(validCV({...base, skills: [{category: 'Test', items: [42]}]}, base), false);
+});
+test('export uses official template, page split, edited content and safe HTML/links', () => {
+  const cv = structuredClone(base);
+  cv.summary = '<script>alert(1)</script> React';
+  cv.projects[0].github_url = 'javascript:alert(1)';
+  cv.layout.experience_items_on_page_one = 1;
+  const html = renderCV(cv, template, 'https://example.com/cv/cv.css', 'Job CV');
+  assert.ok(html.includes('href="https://example.com/cv/cv.css"'));
+  assert.ok(html.includes('&lt;script&gt;alert(1)&lt;/script&gt; <strong>React</strong>'));
+  assert.ok(!html.includes('javascript:'));
+  assert.ok(!html.includes('{{'));
+  assert.ok(html.includes('Experience <small>(continued)</small>'));
+  assert.equal((html.match(/class="page"/g) || []).length, 2);
+  assert.ok(html.indexOf(cv.experience[0].role) < html.indexOf('<section class="page">', html.indexOf('<section class="page">') + 1));
+  cv.experience = []; cv.projects = []; cv.education = []; cv.skills = []; cv.languages = [];
+  assert.ok(!renderCV(cv, template, 'cv.css', 'Empty CV').includes('undefined'));
+});

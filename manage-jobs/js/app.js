@@ -1,8 +1,11 @@
+import { createCVEditor, validCV, renderCV } from './cv-editor.js';
 import { renderAnalysis, evidence, escape } from './render.js';
 import { profileFromCV, createPrompt, importResult } from './workflow.js';
 const $ = id => document.getElementById(id);
 const tabs = [...document.querySelectorAll('[role="tab"]')];
 let savedJobId = null, resultJSON = null;
+let officialCV, cvTemplate;
+const cvEditor = createCVEditor($('cv-editor'), () => message('cv-status', 'Unsaved CV edits. Click Save CV to keep this version for the job.'));
 let cvBasics, profile, contract, currentJob = null, loaded = false, fileRevision = 0;
 function setView(view) {
   const jobsVisible = view === 'jobs';
@@ -126,7 +129,10 @@ async function loadJSON(path) {
   if (!response.ok) throw new Error(`Cannot load ${path} (HTTP ${response.status}).`);
   return response.json();
 }
-Promise.all([loadJSON('../cv/data.json'), loadJSON('contract.json')]).then(([cv, rules]) => {
+Promise.all([loadJSON('../cv/data.json'), loadJSON('contract.json'), fetch('../cv/template.html').then(response => { if (!response.ok) throw new Error('Cannot load CV template.'); return response.text(); })]).then(([cv, rules, template]) => {
+  officialCV = cv; cvTemplate = template; cvEditor.set(cv);
+  $('save-cv').disabled = false; $('export-cv').disabled = false;
+  message('cv-status', 'Official CV loaded. Edit this copy to match the job description.');
   cvBasics = cv.basics; profile = profileFromCV(cv); contract = rules; loaded = true;
   $('profile-status').textContent = `${profile.name} · CV loaded · No API key`;
   $('analyze').disabled = false; $('import-json').disabled = false; updateLetterActions();
@@ -210,7 +216,7 @@ function currentJobEntry() {
   const matches = currentJob && job.jd === currentJob.jd && job.title === currentJob.title && job.company === currentJob.company;
   const id = savedJobId || crypto.randomUUID();
   const existing = savedJobs.find(item => item.id === id);
-  return { ...existing, ...job, id, applied: existing?.applied === true, rejected: existing?.rejected === true, updatedAt: new Date().toISOString(), resultJSON: matches ? resultJSON : null, letter: $('letter').value };
+  return { ...existing, ...job, id, applied: existing?.applied === true, rejected: existing?.rejected === true, updatedAt: new Date().toISOString(), resultJSON: matches ? resultJSON : null, letter: $('letter').value, cv: loaded ? cvEditor.get() : existing?.cv };
 }
 $('download-job').addEventListener('click', () => {
   const entry = currentJobEntry();
@@ -234,6 +240,8 @@ $('save-job').addEventListener('click', () => {
 });
 function resetWorkspace() {
   fileRevision++; currentJob = null; savedJobId = null;
+  if (officialCV) cvEditor.set(officialCV);
+  message('cv-status', 'New job CV starts from the official CV.');
   $('jd-form').reset(); $('jd').dispatchEvent(new Event('input'));
   $('prompt').value = ''; $('copy-prompt').disabled = true; $('download-prompt').disabled = true;
   $('json-input').value = ''; $('json-file').value = ''; clearResults();
@@ -256,6 +264,8 @@ $('saved-jobs').addEventListener('click', event => {
   }
   if (!loaded) return message('jobs-status', 'Wait for the CV profile to load before opening a job.', true);
   resetWorkspace(); savedJobId = id;
+  if (job.cv && validCV(job.cv, officialCV)) { cvEditor.set(job.cv); message('cv-status', 'Saved CV loaded for this job.'); }
+  else if (job.cv) { message('cv-status', 'Saved CV data is invalid. Official CV loaded; saving will replace the invalid copy.', true); }
   $('jd').value = job.jd; $('title').value = job.title; $('company').value = job.company;
   $('jd').dispatchEvent(new Event('input'));
   currentJob = { jd: job.jd, title: job.title, company: job.company };
@@ -294,4 +304,24 @@ $('export-letter').addEventListener('click', () => {
   preview.document.close();
   preview.document.getElementById('print-letter').addEventListener('click', () => preview.print());
   message('letter-status', 'PDF preview opened with your latest edits. Choose Save as PDF / Print to export.');
+});
+
+$('save-cv').addEventListener('click', () => {
+  if (!loaded) return;
+  const entry = currentJobEntry();
+  if (!entry) { message('cv-status', 'Enter a JD with at least 40 characters before saving this CV.', true); return; }
+  if (!persistJobs([entry, ...savedJobs.filter(job => job.id !== entry.id)])) return;
+  savedJobId = entry.id;
+  message('cv-status', 'CV saved to this job in your browser.');
+});
+$('export-cv').addEventListener('click', () => {
+  if (!loaded) return;
+  const preview = window.open('', '_blank');
+  if (!preview) { message('cv-status', 'Allow pop-ups for this site to open the PDF preview.', true); return; }
+  const cv = cvEditor.get();
+  const title = [cv.basics.name, $('company').value.trim(), $('title').value.trim(), 'CV'].filter(Boolean).join(' - ');
+  preview.document.write(renderCV(cv, cvTemplate, new URL('../cv/cv.css', document.baseURI).href, title));
+  preview.document.close();
+  preview.document.getElementById('print-cv').addEventListener('click', () => preview.print());
+  message('cv-status', 'PDF preview opened with your latest CV edits. Export does not save the job; click Save CV to keep edits.');
 });

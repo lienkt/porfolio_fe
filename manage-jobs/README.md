@@ -83,3 +83,23 @@ contact header. It includes the current letter, job title and company, including
 unsaved edits. Click **Save as PDF / Print**, choose **Save as PDF**, and disable
 browser headers and footers. Long letters continue onto additional pages.
 Exporting does not save the job; use **Save letter** to keep edits in the browser.
+
+## Edit, save and export a CV for each job
+
+Open the **CV** tab to edit a copy of the official `cv/data.json`. Every contact,
+summary, skill, language, experience, education, project and bullet has its own
+field. Skills use one comma- or newline-separated text field per group, with
+buttons to add or remove groups. Project technologies also use one comma- or
+newline-separated text field per project. Summary and Skills start expanded; other main
+sections start collapsed. Add, remove or reorder list items; layout and technology emphasis settings
+are editable too. New jobs start with the official CV.
+
+Enter a JD of at least 40 characters and click **Save CV** to save this version
+with the job. Opening the job restores its CV; older jobs start from the official
+CV. **Save job**, **Download JSON** and **Download all** also include the job’s
+CV (save edits before Download all). The official CV files are unchanged.
+
+**Export PDF** opens the latest edited CV using the official template, stylesheet,
+section order and page split. Click **Save as PDF / Print**, select Save as PDF,
+and disable browser headers and footers. Review pagination: added content can
+increase the page count. Export does not save edits to browser storage.

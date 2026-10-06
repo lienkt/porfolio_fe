@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Application Workspace — JD & Cover Letter</title>
-  <link rel="stylesheet" href="styles.css?v=letter-pdf-1">
-  <script type="module" src="js/app.js?v=letter-pdf-1"></script>
+  <title>Application Workspace — JD, Cover Letter & CV</title>
+  <link rel="stylesheet" href="styles.css?v=cv-editor-1">
+  <script type="module" src="js/app.js?v=cv-editor-1"></script>
 </head>
 <body data-view="detail">
   <header class="topbar"><a href="../">← Portfolio</a><span>Application workspace</span><div class="topbar-actions"><span id="profile-status">Loading profile…</span><button id="show-detail" class="secondary" type="button" aria-controls="workspace" aria-pressed="true">Add job</button><button id="show-jobs" class="primary" type="button" aria-controls="panel-jobs" aria-expanded="false">Joblist <span id="saved-count">(0)</span></button></div></header>
@@ -31,6 +31,7 @@
         <button id="tab-import" role="tab" aria-selected="false" aria-controls="panel-import" tabindex="-1">Import JSON</button>
         <button id="tab-analysis" role="tab" aria-selected="false" aria-controls="panel-analysis" tabindex="-1" data-tab="analysis">Analysis</button>
         <button id="tab-letter" role="tab" aria-selected="false" aria-controls="panel-letter" tabindex="-1" data-tab="letter">Cover Letter</button>
+        <button id="tab-cv" role="tab" aria-selected="false" aria-controls="panel-cv" tabindex="-1">CV</button>
       </div>
       <div id="panel-prompt" role="tabpanel" aria-labelledby="tab-prompt" class="panel" tabindex="0">
         <h2>Your AI prompt</h2><p class="muted">1. Enter the JD and click Analyze. 2. Copy the prompt into ChatGPT or another AI chat. 3. Bring its JSON file back to Import JSON.</p>
@@ -54,6 +55,11 @@
         <label class="sr-only" for="letter">Editable cover letter</label><textarea id="letter" class="letter" placeholder="Write your cover letter here, or import an AI draft…"></textarea>
         <div class="letter-footer"><span id="word-count">0 words · target 300–400</span><span>Review the draft before sending.</span></div>
         <details id="letter-evidence" hidden><summary>Evidence used in this draft</summary><div id="letter-sources"></div></details>
+      </div>
+      <div id="panel-cv" role="tabpanel" aria-labelledby="tab-cv" class="panel" tabindex="0" hidden>
+        <div class="letter-head"><div><div class="eyebrow">TAILORED TO THIS JOB</div><h2>Edit CV</h2><p class="muted">Adapt each field to the JD. Add, remove or reorder entries, then save this job’s CV or export using the official CV layout.</p></div><div class="actions"><button id="save-cv" class="secondary" type="button" disabled>Save CV</button><button id="export-cv" class="primary" type="button" disabled>Export PDF</button></div></div>
+        <p id="cv-status" role="status" aria-live="polite">Loading official CV…</p>
+        <div id="cv-editor"></div>
       </div>
     </section>
   </main>
