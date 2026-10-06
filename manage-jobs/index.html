@@ -4,8 +4,8 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Application Workspace — JD & Cover Letter</title>
-  <link rel="stylesheet" href="styles.css?v=joblist-design-3">
-  <script type="module" src="js/app.js?v=joblist-design-3"></script>
+  <link rel="stylesheet" href="styles.css?v=letter-pdf-1">
+  <script type="module" src="js/app.js?v=letter-pdf-1"></script>
 </head>
 <body data-view="detail">
   <header class="topbar"><a href="../">← Portfolio</a><span>Application workspace</span><div class="topbar-actions"><span id="profile-status">Loading profile…</span><button id="show-detail" class="secondary" type="button" aria-controls="workspace" aria-pressed="true">Add job</button><button id="show-jobs" class="primary" type="button" aria-controls="panel-jobs" aria-expanded="false">Joblist <span id="saved-count">(0)</span></button></div></header>
@@ -49,9 +49,9 @@
         <div class="empty"><div class="empty-icon" aria-hidden="true">◎</div><h2>A clearer view of your next role</h2><p>Import your AI JSON result to see hiring priorities, evidence, gaps and positioning.</p><div class="empty-steps"><span>01 &nbsp; Understand the role</span><span>02 &nbsp; Find your strongest proof</span><span>03 &nbsp; Tell a relevant story</span></div></div>
       </div>
       <div id="panel-letter" role="tabpanel" aria-labelledby="tab-letter" class="panel" tabindex="0" hidden>
-        <div class="letter-head"><div><div class="eyebrow">YOUR APPLICATION</div><h2>Cover letter</h2><p class="muted">An editable draft, grounded in your CV.</p></div><div class="actions"><button id="copy" class="secondary" disabled>Copy</button></div></div>
+        <div class="letter-head"><div><div class="eyebrow">YOUR APPLICATION</div><h2>Cover letter</h2><p class="muted">Edit your letter, save it to this job, or export a CV-style PDF.</p></div><div class="actions"><button id="copy" class="secondary" disabled>Copy</button><button id="save-letter" class="secondary" disabled>Save letter</button><button id="export-letter" class="primary" disabled>Export PDF</button></div></div>
         <p id="letter-status" role="status" aria-live="polite">Import an AI result first.</p>
-        <label class="sr-only" for="letter">Editable cover letter</label><textarea id="letter" class="letter" placeholder="Your tailored letter will appear here…" disabled></textarea>
+        <label class="sr-only" for="letter">Editable cover letter</label><textarea id="letter" class="letter" placeholder="Write your cover letter here, or import an AI draft…"></textarea>
         <div class="letter-footer"><span id="word-count">0 words · target 300–400</span><span>Review the draft before sending.</span></div>
         <details id="letter-evidence" hidden><summary>Evidence used in this draft</summary><div id="letter-sources"></div></details>
       </div>

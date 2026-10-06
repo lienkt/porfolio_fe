@@ -3,7 +3,7 @@ import { profileFromCV, createPrompt, importResult } from './workflow.js';
 const $ = id => document.getElementById(id);
 const tabs = [...document.querySelectorAll('[role="tab"]')];
 let savedJobId = null, resultJSON = null;
-let profile, contract, currentJob = null, loaded = false, fileRevision = 0;
+let cvBasics, profile, contract, currentJob = null, loaded = false, fileRevision = 0;
 function setView(view) {
   const jobsVisible = view === 'jobs';
   document.body.dataset.view = jobsVisible ? 'jobs' : 'detail';
@@ -48,11 +48,15 @@ tabs.forEach((tab, index) => {
   });
 });
 function message(id, text, error = false) { $(id).textContent = text; $(id).classList.toggle('error', error); }
-function wordCount() { $('word-count').textContent = `${$('letter').value.trim().split(/\s+/).filter(Boolean).length * Boolean($('letter').value.trim())} words · target 300–400`; }
+function updateLetterActions() {
+  const empty = !$('letter').value.trim();
+  $('copy').disabled = empty; $('save-letter').disabled = empty; $('export-letter').disabled = empty || !loaded;
+}
+function wordCount() { updateLetterActions(); $('word-count').textContent = `${$('letter').value.trim().split(/\s+/).filter(Boolean).length * Boolean($('letter').value.trim())} words · target 300–400`; }
 function clearResults() {
   resultJSON = null;
   $('panel-analysis').textContent = 'Import an AI result to see the analysis.';
-  $('letter').value = ''; $('letter').disabled = true; $('copy').disabled = true;
+  $('letter').value = ''; $('letter').disabled = false; $('copy').disabled = true;
   $('letter-evidence').hidden = true; $('letter-sources').textContent = ''; wordCount();
   message('letter-status', 'Import an AI result first.');
 }
@@ -123,9 +127,9 @@ async function loadJSON(path) {
   return response.json();
 }
 Promise.all([loadJSON('../cv/data.json'), loadJSON('contract.json')]).then(([cv, rules]) => {
-  profile = profileFromCV(cv); contract = rules; loaded = true;
+  cvBasics = cv.basics; profile = profileFromCV(cv); contract = rules; loaded = true;
   $('profile-status').textContent = `${profile.name} · CV loaded · No API key`;
-  $('analyze').disabled = false; $('import-json').disabled = false;
+  $('analyze').disabled = false; $('import-json').disabled = false; updateLetterActions();
 }).catch(error => {
   $('profile-status').textContent = 'Profile could not load';
   message('status', `${error.message} Run python3 -m http.server 8001 and open http://localhost:8001/manage-jobs/.`, true);
@@ -206,7 +210,7 @@ function currentJobEntry() {
   const matches = currentJob && job.jd === currentJob.jd && job.title === currentJob.title && job.company === currentJob.company;
   const id = savedJobId || crypto.randomUUID();
   const existing = savedJobs.find(item => item.id === id);
-  return { ...existing, ...job, id, applied: existing?.applied === true, rejected: existing?.rejected === true, updatedAt: new Date().toISOString(), resultJSON: matches ? resultJSON : null, letter: matches && resultJSON ? $('letter').value : '' };
+  return { ...existing, ...job, id, applied: existing?.applied === true, rejected: existing?.rejected === true, updatedAt: new Date().toISOString(), resultJSON: matches ? resultJSON : null, letter: $('letter').value };
 }
 $('download-job').addEventListener('click', () => {
   const entry = currentJobEntry();
@@ -262,6 +266,32 @@ $('saved-jobs').addEventListener('click', event => {
     $('json-input').value = job.resultJSON; $('import-json').click();
     if (resultJSON) { $('letter').value = job.letter; $('letter').dispatchEvent(new Event('input')); }
   }
+  $('letter').value = job.letter; $('letter').dispatchEvent(new Event('input'));
   message('status', 'Saved job opened. Click Save job to keep further changes.');
 });
 renderJobs();
+
+$('save-letter').addEventListener('click', () => {
+  const entry = currentJobEntry();
+  if (!entry) { message('letter-status', 'Enter a JD with at least 40 characters before saving this letter.', true); return; }
+  if (!persistJobs([entry, ...savedJobs.filter(job => job.id !== entry.id)])) return;
+  savedJobId = entry.id;
+  message('letter-status', 'Cover letter saved to this job in your browser.');
+});
+$('export-letter').addEventListener('click', () => {
+  const text = $('letter').value.trim();
+  if (!text || !loaded) return;
+  const preview = window.open('', '_blank');
+  if (!preview) { message('letter-status', 'Allow pop-ups for this site to open the PDF preview.', true); return; }
+  const filename = [cvBasics.name, $('company').value.trim(), 'Cover Letter'].filter(Boolean).join(' - ');
+  const contacts = [cvBasics.phone, cvBasics.email, cvBasics.website, cvBasics.linkedin].filter(Boolean);
+  const paragraphs = text.split(/\n\s*\n/).map(p => `<p>${escape(p).replace(/\n/g, '<br>')}</p>`).join('');
+  preview.document.write(`<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>${escape(filename)}</title><link rel="stylesheet" href="${new URL('letter-print.css', document.baseURI).href}"></head><body>
+    <nav class="print-toolbar"><span>Choose “Save as PDF” in the print dialog. Turn off browser headers and footers.</span><button type="button" id="print-letter">Save as PDF / Print</button></nav>
+    <article class="letter-page"><header class="resume-header"><h1>${escape(cvBasics.name)}</h1><p>${contacts.map(escape).join(' · ')}</p></header>
+    <section class="application-heading"><h2>Cover letter</h2>${$('title').value.trim() ? `<p class="role">${escape($('title').value.trim())}</p>` : ''}${$('company').value.trim() ? `<p>${escape($('company').value.trim())}</p>` : ''}</section>
+    <div class="letter-body">${paragraphs}</div></article></body></html>`);
+  preview.document.close();
+  preview.document.getElementById('print-letter').addEventListener('click', () => preview.print());
+  message('letter-status', 'PDF preview opened with your latest edits. Choose Save as PDF / Print to export.');
+});

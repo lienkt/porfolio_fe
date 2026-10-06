@@ -71,3 +71,15 @@ Use **Joblist** to open or delete an entry, or **Add job** to start another appl
 Opening an entry and saving again updates that entry. Save after making changes.
 Data stays in this browser on this site; it does not sync across devices and clearing browser data removes it.
 Saved AI results are validated again against the current CV when opened.
+
+## Edit, save and export a cover letter
+
+In **Cover Letter**, edit the imported draft or write your own letter. Enter a JD of
+at least 40 characters, then click **Save letter** to store it with the job without
+leaving the editor. Reopen the job from **Joblist** to continue editing.
+
+**Export PDF** opens an A4 preview using the CV's typography, navy headings and
+contact header. It includes the current letter, job title and company, including
+unsaved edits. Click **Save as PDF / Print**, choose **Save as PDF**, and disable
+browser headers and footers. Long letters continue onto additional pages.
+Exporting does not save the job; use **Save letter** to keep edits in the browser.

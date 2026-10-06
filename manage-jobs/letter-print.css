@@ -1,0 +1,22 @@
+@page { size: A4; margin: 16mm 18mm; }
+* { box-sizing: border-box; }
+body { margin: 0; background: #e9e9e9; color: #1d252c; font: 11pt/1.6 Aptos, "Segoe UI", "Helvetica Neue", Arial, sans-serif; }
+.print-toolbar { max-width: 210mm; margin: 20px auto; padding: 0 20px; display: flex; align-items: center; gap: 20px; font-size: 13px; }
+.print-toolbar button { flex-shrink: 0; padding: 10px 16px; border: 0; border-radius: 6px; color: white; background: #172f3d; font: inherit; cursor: pointer; }
+.letter-page { max-width: 210mm; min-height: 297mm; margin: 20px auto; padding: 16mm 18mm; background: white; box-shadow: 0 2mm 8mm rgba(0,0,0,.12); }
+.resume-header { text-align: center; padding-bottom: 6mm; border-bottom: 1.5pt solid #172f3d; }
+h1 { margin: 0 0 2mm; font-size: 24pt; line-height: 1.2; color: #172f3d; letter-spacing: .025em; }
+.resume-header p { margin: 0; font-size: 9.2pt; color: #075d70; overflow-wrap: anywhere; }
+.application-heading { margin: 8mm 0; }
+h2 { margin: 0 0 3mm; color: #172f3d; font-size: 13pt; text-transform: uppercase; letter-spacing: .08em; }
+.application-heading p { margin: 0; }
+.role { font-weight: 600; }
+.letter-body { overflow-wrap: anywhere; }
+.letter-body p { margin: 0 0 5mm; orphans: 3; widows: 3; }
+@media print {
+  body { background: white; }
+  .print-toolbar { display: none; }
+  .letter-page { width: auto; max-width: none; min-height: 0; margin: 0; padding: 0; box-shadow: none; }
+  .resume-header, .application-heading { break-inside: avoid; }
+}
+@media(max-width:650px) { .print-toolbar { flex-direction: column; align-items: flex-start; } .letter-page { margin: 0; padding: 24px; } }
